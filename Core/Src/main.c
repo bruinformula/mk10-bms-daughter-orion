@@ -24,7 +24,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "mcp3204.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -34,7 +34,14 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+#define CS1_PORT GPIOC
+#define CS1_PIN GPIO_PIN_15
 
+#define CS2_PORT GPIOC
+#define CS2_PIN GPIO_PIN_14
+
+#define CS3_PORT GPIOB
+#define CS3_PIN GPIO_PIN_7
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -45,7 +52,9 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-
+MCP3204 MCP_1;
+MCP3204 MCP_2;
+MCP3204 MCP_3;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -92,6 +101,11 @@ int main(void)
   MX_SPI3_Init();
   /* USER CODE BEGIN 2 */
 
+  initMCP(&MCP_3, &hspi3, CS3_PORT, CS3_PIN);
+  enableCH2(&MCP_3);
+//  getADCValue(&MCP_3);
+//  computeVoltage(&MCP_3);
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -99,7 +113,10 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
+	  getADCValue(&MCP_3);
+	  computeVoltage(&MCP_3);
 
+	  HAL_Delay(100);
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */

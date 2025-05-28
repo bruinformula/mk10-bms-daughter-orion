@@ -45,24 +45,24 @@ void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOC, CS2_Pin|CS3_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(GPIOC, CS2_Pin|CS1_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(CS1_GPIO_Port, CS1_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(CS3_GPIO_Port, CS3_Pin, GPIO_PIN_SET);
 
-  /*Configure GPIO pins : CS2_Pin CS3_Pin */
-  GPIO_InitStruct.Pin = CS2_Pin|CS3_Pin;
+  /*Configure GPIO pins : CS2_Pin CS1_Pin */
+  GPIO_InitStruct.Pin = CS2_Pin|CS1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : CS1_Pin */
-  GPIO_InitStruct.Pin = CS1_Pin;
+  /*Configure GPIO pin : CS3_Pin */
+  GPIO_InitStruct.Pin = CS3_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(CS1_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(CS3_GPIO_Port, &GPIO_InitStruct);
 
 }
 
