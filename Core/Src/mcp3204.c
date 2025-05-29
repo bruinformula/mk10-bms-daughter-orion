@@ -1,9 +1,9 @@
-/*
- * mcp3204.c
- *
- *  Created on: May 23, 2025
- *      Author: ishanchitale
- */
+///*
+// * mcp3204.c
+// *
+// *  Created on: May 23, 2025
+// *      Author: ishanchitale
+// */
 
 
 #include "mcp3204.h"
@@ -21,8 +21,8 @@ void initMCP(MCP3204* mcp, SPI_HandleTypeDef* spi, GPIO_TypeDef* port, uint16_t 
 
 void getADCValue(MCP3204* mcp) {
 	// Assume desired channel has been selected already...
-	uint8_t txData[3] = {mcp->config.byte, 0x00, 0x00};
-	uint8_t rxData[3] = {0x00, 0x00, 0x00};
+	uint8_t txData[4] = {mcp->config.byte, 0x00, 0x00, 0x00};
+	uint8_t rxData[4] = {0x00, 0x00, 0x00, 0x00};
 
 	// 010011010001
 

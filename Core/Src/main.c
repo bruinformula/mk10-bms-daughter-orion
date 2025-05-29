@@ -52,9 +52,11 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-MCP3204 MCP_1;
-MCP3204 MCP_2;
-MCP3204 MCP_3;
+MCP3204 MCP1;
+MCP3204 MCP2;
+MCP3204 MCP3;
+
+uint16_t raw;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -97,14 +99,30 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_ADC1_Init();
   MX_SPI3_Init();
+  MX_ADC1_Init();
   /* USER CODE BEGIN 2 */
 
-  initMCP(&MCP_3, &hspi3, CS3_PORT, CS3_PIN);
-  enableCH2(&MCP_3);
-//  getADCValue(&MCP_3);
-//  computeVoltage(&MCP_3);
+  initMCP(&MCP1, &hspi3, CS1_PORT, CS1_PIN);
+  enableCH0(&MCP1);
+  getADCValue(&MCP1);
+  computeVoltage(&MCP1);
+
+//  initMCP(&MCP2, &hspi3, CS2_PORT, CS2_PIN);
+//  enableCH0(&MCP2);
+//  getADCValue(&MCP2);
+//  computeVoltage(&MCP2);
+
+//  initMCP(&MCP3, &hspi3, CS3_PORT, CS3_PIN);
+//  enableCH1(&MCP3);
+//  getADCValue(&MCP3);
+//  computeVoltage(&MCP3);
+
+//  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_SET);
+//  HAL_ADC_Start(&hadc1);
+//  HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY);
+//  raw = HAL_ADC_GetValue(&hadc1);
+//  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
 
   /* USER CODE END 2 */
 
@@ -113,10 +131,7 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-	  getADCValue(&MCP_3);
-	  computeVoltage(&MCP_3);
 
-	  HAL_Delay(100);
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
