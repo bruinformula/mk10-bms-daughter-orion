@@ -59,24 +59,22 @@ MCP3204 MCP1;
 MCP3204 MCP2;
 MCP3204 MCP3;
 
-uint16_t adcBuffer[8];
-uint16_t thermistorBuffer[8];
+uint16_t rawADCBuffer[8];
+float voltageBuffer[8];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 /* USER CODE BEGIN PFP */
-void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc);
+void computeSTM_ADC_Voltages();
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc) {
-    if (hadc->Instance == ADC1) {
-        for (size_t i = 0; i < 8; i++) {
-            thermistorBuffer[i] = (adcBuffer[i] * ADC_VREF) / 4095.0f;
-        }
-    }
+void computeSTM_ADC_Voltages() {
+	for (size_t i = 0; i < 8; i++) {
+		voltageBuffer[i] = computeVoltage(rawADCBuffer[i]);
+	}
 }
 /* USER CODE END 0 */
 
@@ -118,12 +116,6 @@ int main(void)
   initMCP(&MCP2, &hspi3, CS2_PORT, CS2_PIN);
   initMCP(&MCP3, &hspi3, CS3_PORT, CS3_PIN);
 
-//  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_SET);
-//  HAL_ADC_Start(&hadc1);
-//  HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY);
-//  raw = HAL_ADC_GetValue(&hadc1);
-//  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
-
 //  HAL_ADC_Start_DMA(&hadc1, (uint32_t*) adcBuffer, 8);
 
   /* USER CODE END 2 */
@@ -132,6 +124,9 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  HAL_ADC_Start_DMA(&hadc1, (uint32_t*) rawADCBuffer, 8);
+	  computeSTM_ADC_Voltages();
+
 	  computeCH0(&MCP1);
 	  computeCH1(&MCP1);
 	  computeCH2(&MCP1);
@@ -147,7 +142,7 @@ int main(void)
 	  computeCH2(&MCP3);
 	  computeCH3(&MCP3);
 
-	   HAL_Delay(500);
+	   HAL_Delay(1000);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
