@@ -21,7 +21,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <stdio.h>      // printf()
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -31,7 +31,17 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+#define MCP3204_CS_LOW()   HAL_GPIO_WritePin(CS1_GPIO_Port, CS1_Pin, GPIO_PIN_RESET)
+#define MCP3204_CS_HIGH()  HAL_GPIO_WritePin(CS1_GPIO_Port, CS1_Pin, GPIO_PIN_SET)
 
+/* 3-byte command table (Mode-0, single-ended) – see Table 5-1 in the datasheet :contentReference[oaicite:0]{index=0} */
+static const uint8_t mcp_cmd[4][3] =
+{
+  { 0x06, 0x00, 0x00 },  // CH0 : 0000 0110b 00000000 00000000
+  { 0x07, 0x00, 0x00 },  // CH1
+  { 0x0A, 0x00, 0x00 },  // CH2
+  { 0x0B, 0x00, 0x00 }   // CH3
+};
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -40,23 +50,47 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
+SPI_HandleTypeDef hspi1;
+
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
-
+uint16_t adc_raw[4];   // CH0-CH3 last conversion
+char     uart_buf[64]; // printf staging
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_USART2_UART_Init(void);
+static void MX_SPI1_Init(void);
 /* USER CODE BEGIN PFP */
-
+static uint16_t MCP3204_ReadChannel(uint8_t ch);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+static uint16_t MCP3204_ReadChannel(uint8_t ch)
+{
+  uint8_t rx_buf[3] = {0};
 
+  if (ch > 3) return 0;          // guard
+
+  MCP3204_CS_LOW();
+  if (HAL_SPI_TransmitReceive(&hspi1,
+                              (uint8_t*)mcp_cmd[ch],  // tx
+                              rx_buf,                 // rx
+                              3,
+                              HAL_MAX_DELAY) != HAL_OK)
+  {
+    MCP3204_CS_HIGH();
+    return 0;
+  }
+  MCP3204_CS_HIGH();
+
+  /* Combine the 12 data bits: rx_buf[1] = xxxx B11-B8,  rx_buf[2] = B7-B0      */
+  return ( (rx_buf[1] & 0x0F) << 8 ) | rx_buf[2];
+}
 /* USER CODE END 0 */
 
 /**
@@ -89,8 +123,9 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_USART2_UART_Init();
+  MX_SPI1_Init();
   /* USER CODE BEGIN 2 */
-
+  HAL_Delay(10);               // settle
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -100,6 +135,18 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+	  for (uint8_t ch = 0; ch < 4; ch++)
+	  {
+	      adc_raw[ch] = MCP3204_ReadChannel(ch);
+	  }
+
+	  int n = snprintf(uart_buf, sizeof(uart_buf),
+	                   "CH0=%4u  CH1=%4u  CH2=%4u  CH3=%4u\r\n",
+	                   adc_raw[0], adc_raw[1], adc_raw[2], adc_raw[3]);
+
+	  HAL_UART_Transmit(&huart2, (uint8_t*)uart_buf, n, HAL_MAX_DELAY);
+
+	  HAL_Delay(200);   // 5 Hz update
   }
   /* USER CODE END 3 */
 }
@@ -120,16 +167,10 @@ void SystemClock_Config(void)
     Error_Handler();
   }
 
-  /** Configure LSE Drive Capability
-  */
-  HAL_PWR_EnableBkUpAccess();
-  __HAL_RCC_LSEDRIVE_CONFIG(RCC_LSEDRIVE_LOW);
-
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
   */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_LSE|RCC_OSCILLATORTYPE_MSI;
-  RCC_OscInitStruct.LSEState = RCC_LSE_ON;
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_MSI;
   RCC_OscInitStruct.MSIState = RCC_MSI_ON;
   RCC_OscInitStruct.MSICalibrationValue = 0;
   RCC_OscInitStruct.MSIClockRange = RCC_MSIRANGE_6;
@@ -158,10 +199,46 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
+}
 
-  /** Enable MSI Auto calibration
+/**
+  * @brief SPI1 Initialization Function
+  * @param None
+  * @retval None
   */
-  HAL_RCCEx_EnableMSIPLLMode();
+static void MX_SPI1_Init(void)
+{
+
+  /* USER CODE BEGIN SPI1_Init 0 */
+
+  /* USER CODE END SPI1_Init 0 */
+
+  /* USER CODE BEGIN SPI1_Init 1 */
+
+  /* USER CODE END SPI1_Init 1 */
+  /* SPI1 parameter configuration*/
+  hspi1.Instance = SPI1;
+  hspi1.Init.Mode = SPI_MODE_MASTER;
+  hspi1.Init.Direction = SPI_DIRECTION_2LINES;
+  hspi1.Init.DataSize = SPI_DATASIZE_8BIT;
+  hspi1.Init.CLKPolarity = SPI_POLARITY_LOW;
+  hspi1.Init.CLKPhase = SPI_PHASE_1EDGE;
+  hspi1.Init.NSS = SPI_NSS_SOFT;
+  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_64;
+  hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
+  hspi1.Init.TIMode = SPI_TIMODE_DISABLE;
+  hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
+  hspi1.Init.CRCPolynomial = 7;
+  hspi1.Init.CRCLength = SPI_CRC_LENGTH_DATASIZE;
+  hspi1.Init.NSSPMode = SPI_NSS_PULSE_DISABLE;
+  if (HAL_SPI_Init(&hspi1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN SPI1_Init 2 */
+
+  /* USER CODE END SPI1_Init 2 */
+
 }
 
 /**
@@ -217,14 +294,26 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(CS1_GPIO_Port, CS1_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pin : LD3_Pin */
-  GPIO_InitStruct.Pin = LD3_Pin;
+  /*Configure GPIO pin : PC14 */
+  GPIO_InitStruct.Pin = GPIO_PIN_14;
+  GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : CS1_Pin */
+  GPIO_InitStruct.Pin = CS1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(LD3_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(CS1_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : PA0 */
+  GPIO_InitStruct.Pin = GPIO_PIN_0;
+  GPIO_InitStruct.Mode = GPIO_MODE_ANALOG_ADC_CONTROL;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /* USER CODE BEGIN MX_GPIO_Init_2 */
 
