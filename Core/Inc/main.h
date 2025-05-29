@@ -63,6 +63,20 @@ void Error_Handler(void);
 #define CS1_GPIO_Port GPIOC
 #define T13_Pin GPIO_PIN_0
 #define T13_GPIO_Port GPIOA
+#define T14_Pin GPIO_PIN_1
+#define T14_GPIO_Port GPIOA
+#define T15_Pin GPIO_PIN_2
+#define T15_GPIO_Port GPIOA
+#define T16_Pin GPIO_PIN_3
+#define T16_GPIO_Port GPIOA
+#define T17_Pin GPIO_PIN_4
+#define T17_GPIO_Port GPIOA
+#define T18_Pin GPIO_PIN_5
+#define T18_GPIO_Port GPIOA
+#define T19_Pin GPIO_PIN_6
+#define T19_GPIO_Port GPIOA
+#define T20_Pin GPIO_PIN_7
+#define T20_GPIO_Port GPIOA
 #define CS3_Pin GPIO_PIN_7
 #define CS3_GPIO_Port GPIOB
 

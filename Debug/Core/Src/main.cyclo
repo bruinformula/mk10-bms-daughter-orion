@@ -1,3 +1,4 @@
-../Core/Src/main.c:81:5:main	1
-../Core/Src/main.c:153:6:SystemClock_Config	4
-../Core/Src/main.c:201:6:Error_Handler	1
+../Core/Src/main.c:79:6:HAL_ADC_ConvCpltCallback	3
+../Core/Src/main.c:92:5:main	1
+../Core/Src/main.c:184:6:SystemClock_Config	4
+../Core/Src/main.c:232:6:Error_Handler	1

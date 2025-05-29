@@ -44,7 +44,7 @@
 #define CS3_PORT GPIOB
 #define CS3_PIN GPIO_PIN_7
 
-#define VREF 3.32
+#define ADC_VREF 3.32
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -59,19 +59,30 @@ MCP3204 MCP1;
 MCP3204 MCP2;
 MCP3204 MCP3;
 
-uint16_t adcBuffer[1];
-float pa0_voltage;
+uint16_t adcBuffer[8];
+uint16_t thermistorBuffer[8];
+
+float T1;
+float T2;
+float T3;
+float T4;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 /* USER CODE BEGIN PFP */
-
+void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc) {
+    if (hadc->Instance == ADC1) {
+        for (size_t i = 0; i < 8; i++) {
+            thermistorBuffer[i] = (adcBuffer[i] * ADC_VREF) / 4095.0f;
+        }
+    }
+}
 /* USER CODE END 0 */
 
 /**
@@ -109,7 +120,6 @@ int main(void)
   /* USER CODE BEGIN 2 */
 
   initMCP(&MCP1, &hspi3, CS1_PORT, CS1_PIN);
-  enableCH0(&MCP1);
 
 //  initMCP(&MCP2, &hspi3, CS2_PORT, CS2_PIN);
 //  enableCH0(&MCP2);
@@ -127,17 +137,38 @@ int main(void)
 //  raw = HAL_ADC_GetValue(&hadc1);
 //  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
 
+//  HAL_ADC_Start_DMA(&hadc1, (uint32_t*) adcBuffer, 8);
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  HAL_ADC_Start_DMA(&hadc1, (uint32_t*) adcBuffer, 1);
-	  pa0_voltage = (adcBuffer[0]/4095.0)*VREF;
+//	  HAL_ADC_Start_DMA(&hadc1, (uint32_t*) adcBuffer, 1);
+//	  pa0_voltage = (adcBuffer[0]/4095.0)*ADC_VREF;
 
+	   enableCH0(&MCP1);
 	   getADCValue(&MCP1);
 	   computeVoltage(&MCP1);
+	   T1 = MCP1.voltageReading;
+
+	   enableCH1(&MCP1);
+	   getADCValue(&MCP1);
+	   computeVoltage(&MCP1);
+	   T2 = MCP1.voltageReading;
+
+	   enableCH2(&MCP1);
+	   getADCValue(&MCP1);
+	   computeVoltage(&MCP1);
+	   T3 = MCP1.voltageReading;
+
+	   enableCH3(&MCP1);
+	   getADCValue(&MCP1);
+	   computeVoltage(&MCP1);
+	   T4 = MCP1.voltageReading;
+
+	   HAL_Delay(500);
 
     /* USER CODE END WHILE */
 

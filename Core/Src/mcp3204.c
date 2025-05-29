@@ -16,22 +16,28 @@ void initMCP(MCP3204* mcp, SPI_HandleTypeDef* spi, GPIO_TypeDef* port, uint16_t 
 	mcp->config.bits.RESV = RESV_BIT; // Fixed at 0
 	mcp->config.bits.START = START_BIT; // Fixed at 1
 
+	mcp->txData[1] = 0;
+	mcp->txData[2] = 0;
+	mcp->txData[3] = 0;
+
 	HAL_GPIO_WritePin(mcp->CS_PORT, mcp->CS_PIN, GPIO_PIN_SET); // Assert it high
 }
 
 void getADCValue(MCP3204* mcp) {
 	// Assume desired channel has been selected already...
-	uint8_t txData[4] = {mcp->config.byte, 0x00, 0x00, 0x00};
-	uint8_t rxData[4] = {0x00, 0x00, 0x00, 0x00};
+	mcp->txData[0] = mcp->config.byte;
 
-	// 010011010001
+	mcp->rxData[0] = 0;
+	mcp->rxData[1] = 0;
+	mcp->rxData[2] = 0;
+	mcp->rxData[3] = 0;
 
 	HAL_GPIO_WritePin(mcp->CS_PORT, mcp->CS_PIN, GPIO_PIN_RESET);
-	HAL_SPI_TransmitReceive(mcp->spiInstance, txData, rxData, 3, HAL_MAX_DELAY);
+	HAL_SPI_TransmitReceive(mcp->spiInstance, mcp->txData, mcp->rxData, 4, HAL_MAX_DELAY);
 	HAL_GPIO_WritePin(mcp->CS_PORT, mcp->CS_PIN, GPIO_PIN_SET);
 
-	uint16_t value = ((uint16_t)rxData[1] << 8) | rxData[2];
-	mcp->rawADC = (value >> 4); // We only want the first 12 bits; use RSHIFT-4
+	uint16_t value = ((uint16_t)mcp->rxData[1] << 8) | mcp->rxData[2];
+	mcp->rawADC = (value >> 3); // Use RSHIFT-3
 }
 
 void computeVoltage(MCP3204* mcp) {

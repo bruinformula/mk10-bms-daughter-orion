@@ -35,6 +35,9 @@ typedef struct MCP3204 {
 		} bits;
 	} config;
 
+	uint8_t txData[4];
+	uint8_t rxData[4];
+
 } MCP3204;
 
 typedef enum CHANNELS {
