@@ -19,6 +19,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "adc.h"
+#include "dma.h"
 #include "spi.h"
 #include "gpio.h"
 
@@ -42,6 +43,8 @@
 
 #define CS3_PORT GPIOB
 #define CS3_PIN GPIO_PIN_7
+
+#define VREF 3.32
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -56,7 +59,8 @@ MCP3204 MCP1;
 MCP3204 MCP2;
 MCP3204 MCP3;
 
-uint16_t raw;
+uint16_t adcBuffer[1];
+float pa0_voltage;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -99,14 +103,13 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_DMA_Init();
   MX_SPI3_Init();
   MX_ADC1_Init();
   /* USER CODE BEGIN 2 */
 
   initMCP(&MCP1, &hspi3, CS1_PORT, CS1_PIN);
   enableCH0(&MCP1);
-  getADCValue(&MCP1);
-  computeVoltage(&MCP1);
 
 //  initMCP(&MCP2, &hspi3, CS2_PORT, CS2_PIN);
 //  enableCH0(&MCP2);
@@ -130,6 +133,12 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  HAL_ADC_Start_DMA(&hadc1, (uint32_t*) adcBuffer, 1);
+	  pa0_voltage = (adcBuffer[0]/4095.0)*VREF;
+
+	   getADCValue(&MCP1);
+	   computeVoltage(&MCP1);
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
