@@ -23,8 +23,14 @@ typedef struct MCP3204 {
 	GPIO_TypeDef* CS_PORT;
 	uint16_t CS_PIN;
 
+	uint8_t txData[4];
+	uint8_t rxData[4];
 	uint16_t rawADC;
-	float voltageReading;
+
+	float CH0_Voltage;
+	float CH1_Voltage;
+	float CH2_Voltage;
+	float CH3_Voltage;
 
 	union {
 		uint8_t byte;
@@ -34,9 +40,6 @@ typedef struct MCP3204 {
 			volatile unsigned int START: 1;
 		} bits;
 	} config;
-
-	uint8_t txData[4];
-	uint8_t rxData[4];
 
 } MCP3204;
 
@@ -53,15 +56,21 @@ typedef enum CHANNELS {
 
 void initMCP(MCP3204* mcp, SPI_HandleTypeDef* spiInstance, GPIO_TypeDef* port, uint16_t pin);
 void getADCValue(MCP3204* mcp);
-void computeVoltage(MCP3204* mcp);
+float computeVoltage(uint16_t adc_reading);
+
+void computeCH0(MCP3204* mcp);
+void computeCH1(MCP3204* mcp);
+void computeCH2(MCP3204* mcp);
+void computeCH3(MCP3204* mcp);
 
 void enableCH0(MCP3204* mcp);
 void enableCH1(MCP3204* mcp);
 void enableCH2(MCP3204* mcp);
 void enableCH3(MCP3204* mcp);
-void enablePN_0_1(MCP3204* mcp);
-void enablePN_1_0(MCP3204* mcp);
-void enablePN_2_3(MCP3204* mcp);
-void enablePN_3_2(MCP3204* mcp);
+
+//void enablePN_0_1(MCP3204* mcp);
+//void enablePN_1_0(MCP3204* mcp);
+//void enablePN_2_3(MCP3204* mcp);
+//void enablePN_3_2(MCP3204* mcp);
 
 #endif /* INC_MCP3204_H_ */

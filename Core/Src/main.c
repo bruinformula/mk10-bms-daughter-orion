@@ -61,11 +61,6 @@ MCP3204 MCP3;
 
 uint16_t adcBuffer[8];
 uint16_t thermistorBuffer[8];
-
-float T1;
-float T2;
-float T3;
-float T4;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -120,16 +115,8 @@ int main(void)
   /* USER CODE BEGIN 2 */
 
   initMCP(&MCP1, &hspi3, CS1_PORT, CS1_PIN);
-
-//  initMCP(&MCP2, &hspi3, CS2_PORT, CS2_PIN);
-//  enableCH0(&MCP2);
-//  getADCValue(&MCP2);
-//  computeVoltage(&MCP2);
-
-//  initMCP(&MCP3, &hspi3, CS3_PORT, CS3_PIN);
-//  enableCH1(&MCP3);
-//  getADCValue(&MCP3);
-//  computeVoltage(&MCP3);
+  initMCP(&MCP2, &hspi3, CS2_PORT, CS2_PIN);
+  initMCP(&MCP3, &hspi3, CS3_PORT, CS3_PIN);
 
 //  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_SET);
 //  HAL_ADC_Start(&hadc1);
@@ -145,31 +132,22 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-//	  HAL_ADC_Start_DMA(&hadc1, (uint32_t*) adcBuffer, 1);
-//	  pa0_voltage = (adcBuffer[0]/4095.0)*ADC_VREF;
+	  computeCH0(&MCP1);
+	  computeCH1(&MCP1);
+	  computeCH2(&MCP1);
+	  computeCH3(&MCP1);
 
-	   enableCH0(&MCP1);
-	   getADCValue(&MCP1);
-	   computeVoltage(&MCP1);
-	   T1 = MCP1.voltageReading;
+	  computeCH0(&MCP2);
+	  computeCH1(&MCP2);
+	  computeCH2(&MCP2);
+	  computeCH3(&MCP2);
 
-	   enableCH1(&MCP1);
-	   getADCValue(&MCP1);
-	   computeVoltage(&MCP1);
-	   T2 = MCP1.voltageReading;
-
-	   enableCH2(&MCP1);
-	   getADCValue(&MCP1);
-	   computeVoltage(&MCP1);
-	   T3 = MCP1.voltageReading;
-
-	   enableCH3(&MCP1);
-	   getADCValue(&MCP1);
-	   computeVoltage(&MCP1);
-	   T4 = MCP1.voltageReading;
+	  computeCH0(&MCP3);
+	  computeCH1(&MCP3);
+	  computeCH2(&MCP3);
+	  computeCH3(&MCP3);
 
 	   HAL_Delay(500);
-
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

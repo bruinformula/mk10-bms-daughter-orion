@@ -40,8 +40,32 @@ void getADCValue(MCP3204* mcp) {
 	mcp->rawADC = (value >> 3); // Use RSHIFT-3
 }
 
-void computeVoltage(MCP3204* mcp) {
-	mcp->voltageReading = (mcp->rawADC * MCP_VREF)/4095.0;
+void computeCH0(MCP3204* mcp) {
+	enableCH0(mcp);
+	getADCValue(mcp);
+	mcp->CH0_Voltage = computeVoltage(mcp->rawADC);
+}
+
+void computeCH1(MCP3204* mcp) {
+	enableCH1(mcp);
+	getADCValue(mcp);
+	mcp->CH1_Voltage = computeVoltage(mcp->rawADC);
+}
+
+void computeCH2(MCP3204* mcp) {
+	enableCH2(mcp);
+	getADCValue(mcp);
+	mcp->CH2_Voltage = computeVoltage(mcp->rawADC);
+}
+
+void computeCH3(MCP3204* mcp) {
+	enableCH3(mcp);
+	getADCValue(mcp);
+	mcp->CH3_Voltage = computeVoltage(mcp->rawADC);
+}
+
+float computeVoltage(uint16_t adc_reading) {
+	return (adc_reading * MCP_VREF)/4095.0;
 }
 
 void enableCH0(MCP3204* mcp) {
@@ -60,18 +84,18 @@ void enableCH3(MCP3204* mcp) {
 	mcp->config.bits.CH_SELECT = CH_3;
 }
 
-void enablePN_0_1(MCP3204* mcp) {
-	mcp->config.bits.CH_SELECT = PN_0_1;
-}
-
-void enablePN_1_0(MCP3204* mcp) {
-	mcp->config.bits.CH_SELECT = PN_1_0;
-}
-
-void enablePN_2_3(MCP3204* mcp) {
-	mcp->config.bits.CH_SELECT = PN_2_3;
-}
-
-void enablePN_3_2(MCP3204* mcp) {
-	mcp->config.bits.CH_SELECT = PN_3_2;
-}
+//void enablePN_0_1(MCP3204* mcp) {
+//	mcp->config.bits.CH_SELECT = PN_0_1;
+//}
+//
+//void enablePN_1_0(MCP3204* mcp) {
+//	mcp->config.bits.CH_SELECT = PN_1_0;
+//}
+//
+//void enablePN_2_3(MCP3204* mcp) {
+//	mcp->config.bits.CH_SELECT = PN_2_3;
+//}
+//
+//void enablePN_3_2(MCP3204* mcp) {
+//	mcp->config.bits.CH_SELECT = PN_3_2;
+//}
