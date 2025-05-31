@@ -207,7 +207,7 @@ int main(void)
 	  temp_conversions[18] = voltageToTemp(voltageBuffer[6]);
 	  temp_conversions[19] = voltageToTemp(voltageBuffer[7]);
 
-	   HAL_Delay(1000);
+	   HAL_Delay(50);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

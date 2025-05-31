@@ -35,17 +35,17 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  15 .debug_rnglists 000009d5  00000000  00000000  00017f20  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_macro  0002179c  00000000  00000000  000188f5  2**0
+ 16 .debug_macro  000217de  00000000  00000000  000188f5  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   0000fb2a  00000000  00000000  0003a091  2**0
+ 17 .debug_line   0000fb29  00000000  00000000  0003a0d3  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    000cbfc5  00000000  00000000  00049bbb  2**0
+ 18 .debug_str    000cc052  00000000  00000000  00049bfc  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000043  00000000  00000000  00115b80  2**0
+ 19 .comment      00000043  00000000  00000000  00115c4e  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  000035a4  00000000  00000000  00115bc4  2**2
+ 20 .debug_frame  000035a4  00000000  00000000  00115c94  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_line_str 00000078  00000000  00000000  00119168  2**0
+ 21 .debug_line_str 00000078  00000000  00000000  00119238  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -851,7 +851,7 @@ void MX_ADC1_Init(void)
  8000a8c:	d001      	beq.n	8000a92 <MX_ADC1_Init+0x86>
   {
     Error_Handler();
- 8000a8e:	f000 fc67 	bl	8001360 <Error_Handler>
+ 8000a8e:	f000 fc65 	bl	800135c <Error_Handler>
   }
 
   /** Configure Regular Channel
@@ -884,7 +884,7 @@ void MX_ADC1_Init(void)
  8000ab8:	d001      	beq.n	8000abe <MX_ADC1_Init+0xb2>
   {
     Error_Handler();
- 8000aba:	f000 fc51 	bl	8001360 <Error_Handler>
+ 8000aba:	f000 fc4f 	bl	800135c <Error_Handler>
   }
 
   /** Configure Regular Channel
@@ -905,7 +905,7 @@ void MX_ADC1_Init(void)
  8000ad4:	d001      	beq.n	8000ada <MX_ADC1_Init+0xce>
   {
     Error_Handler();
- 8000ad6:	f000 fc43 	bl	8001360 <Error_Handler>
+ 8000ad6:	f000 fc41 	bl	800135c <Error_Handler>
   }
 
   /** Configure Regular Channel
@@ -926,7 +926,7 @@ void MX_ADC1_Init(void)
  8000af0:	d001      	beq.n	8000af6 <MX_ADC1_Init+0xea>
   {
     Error_Handler();
- 8000af2:	f000 fc35 	bl	8001360 <Error_Handler>
+ 8000af2:	f000 fc33 	bl	800135c <Error_Handler>
   }
 
   /** Configure Regular Channel
@@ -947,7 +947,7 @@ void MX_ADC1_Init(void)
  8000b0c:	d001      	beq.n	8000b12 <MX_ADC1_Init+0x106>
   {
     Error_Handler();
- 8000b0e:	f000 fc27 	bl	8001360 <Error_Handler>
+ 8000b0e:	f000 fc25 	bl	800135c <Error_Handler>
   }
 
   /** Configure Regular Channel
@@ -968,7 +968,7 @@ void MX_ADC1_Init(void)
  8000b2a:	d001      	beq.n	8000b30 <MX_ADC1_Init+0x124>
   {
     Error_Handler();
- 8000b2c:	f000 fc18 	bl	8001360 <Error_Handler>
+ 8000b2c:	f000 fc16 	bl	800135c <Error_Handler>
   }
 
   /** Configure Regular Channel
@@ -989,7 +989,7 @@ void MX_ADC1_Init(void)
  8000b48:	d001      	beq.n	8000b4e <MX_ADC1_Init+0x142>
   {
     Error_Handler();
- 8000b4a:	f000 fc09 	bl	8001360 <Error_Handler>
+ 8000b4a:	f000 fc07 	bl	800135c <Error_Handler>
   }
 
   /** Configure Regular Channel
@@ -1010,7 +1010,7 @@ void MX_ADC1_Init(void)
  8000b66:	d001      	beq.n	8000b6c <MX_ADC1_Init+0x160>
   {
     Error_Handler();
- 8000b68:	f000 fbfa 	bl	8001360 <Error_Handler>
+ 8000b68:	f000 fbf8 	bl	800135c <Error_Handler>
   }
 
   /** Configure Regular Channel
@@ -1031,7 +1031,7 @@ void MX_ADC1_Init(void)
  8000b84:	d001      	beq.n	8000b8a <MX_ADC1_Init+0x17e>
   {
     Error_Handler();
- 8000b86:	f000 fbeb 	bl	8001360 <Error_Handler>
+ 8000b86:	f000 fbe9 	bl	800135c <Error_Handler>
   }
   /* USER CODE BEGIN ADC1_Init 2 */
 
@@ -1124,7 +1124,7 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef* adcHandle)
  8000c24:	d001      	beq.n	8000c2a <HAL_ADC_MspInit+0x6e>
     {
       Error_Handler();
- 8000c26:	f000 fb9b 	bl	8001360 <Error_Handler>
+ 8000c26:	f000 fb99 	bl	800135c <Error_Handler>
     }
 
     /* ADC1 clock enable */
@@ -1218,7 +1218,7 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef* adcHandle)
  8000cb8:	d001      	beq.n	8000cbe <HAL_ADC_MspInit+0x102>
     {
       Error_Handler();
- 8000cba:	f000 fb51 	bl	8001360 <Error_Handler>
+ 8000cba:	f000 fb4f 	bl	800135c <Error_Handler>
     }
 
     __HAL_LINKDMA(adcHandle,DMA_Handle,hdma_adc1);
@@ -1314,7 +1314,7 @@ void MX_CAN1_Init(void)
  8000d3e:	d001      	beq.n	8000d44 <MX_CAN1_Init+0x60>
   {
     Error_Handler();
- 8000d40:	f000 fb0e 	bl	8001360 <Error_Handler>
+ 8000d40:	f000 fb0c 	bl	800135c <Error_Handler>
   }
   /* USER CODE BEGIN CAN1_Init 2 */
 
@@ -1754,7 +1754,7 @@ int main(void)
 
   /* Configure the system clock */
   SystemClock_Config();
- 8001028:	f000 f954 	bl	80012d4 <SystemClock_Config>
+ 8001028:	f000 f952 	bl	80012d0 <SystemClock_Config>
   /* USER CODE BEGIN SysInit */
 
   /* USER CODE END SysInit */
@@ -1774,22 +1774,22 @@ int main(void)
 
   initMCP(&MCP1, &hspi3, CS1_PORT, CS1_PIN);
  8001040:	f44f 4300 	mov.w	r3, #32768	@ 0x8000
- 8001044:	4a99      	ldr	r2, [pc, #612]	@ (80012ac <main+0x28c>)
- 8001046:	499a      	ldr	r1, [pc, #616]	@ (80012b0 <main+0x290>)
- 8001048:	489a      	ldr	r0, [pc, #616]	@ (80012b4 <main+0x294>)
- 800104a:	f000 f98f 	bl	800136c <initMCP>
+ 8001044:	4a98      	ldr	r2, [pc, #608]	@ (80012a8 <main+0x288>)
+ 8001046:	4999      	ldr	r1, [pc, #612]	@ (80012ac <main+0x28c>)
+ 8001048:	4899      	ldr	r0, [pc, #612]	@ (80012b0 <main+0x290>)
+ 800104a:	f000 f98d 	bl	8001368 <initMCP>
   initMCP(&MCP2, &hspi3, CS2_PORT, CS2_PIN);
  800104e:	f44f 4380 	mov.w	r3, #16384	@ 0x4000
- 8001052:	4a96      	ldr	r2, [pc, #600]	@ (80012ac <main+0x28c>)
- 8001054:	4996      	ldr	r1, [pc, #600]	@ (80012b0 <main+0x290>)
- 8001056:	4898      	ldr	r0, [pc, #608]	@ (80012b8 <main+0x298>)
- 8001058:	f000 f988 	bl	800136c <initMCP>
+ 8001052:	4a95      	ldr	r2, [pc, #596]	@ (80012a8 <main+0x288>)
+ 8001054:	4995      	ldr	r1, [pc, #596]	@ (80012ac <main+0x28c>)
+ 8001056:	4897      	ldr	r0, [pc, #604]	@ (80012b4 <main+0x294>)
+ 8001058:	f000 f986 	bl	8001368 <initMCP>
   initMCP(&MCP3, &hspi3, CS3_PORT, CS3_PIN);
  800105c:	2380      	movs	r3, #128	@ 0x80
- 800105e:	4a97      	ldr	r2, [pc, #604]	@ (80012bc <main+0x29c>)
- 8001060:	4993      	ldr	r1, [pc, #588]	@ (80012b0 <main+0x290>)
- 8001062:	4897      	ldr	r0, [pc, #604]	@ (80012c0 <main+0x2a0>)
- 8001064:	f000 f982 	bl	800136c <initMCP>
+ 800105e:	4a96      	ldr	r2, [pc, #600]	@ (80012b8 <main+0x298>)
+ 8001060:	4992      	ldr	r1, [pc, #584]	@ (80012ac <main+0x28c>)
+ 8001062:	4896      	ldr	r0, [pc, #600]	@ (80012bc <main+0x29c>)
+ 8001064:	f000 f980 	bl	8001368 <initMCP>
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
@@ -1797,619 +1797,620 @@ int main(void)
   {
 	  HAL_ADC_Start_DMA(&hadc1, (uint32_t*) rawADCBuffer, 8);
  8001068:	2208      	movs	r2, #8
- 800106a:	4996      	ldr	r1, [pc, #600]	@ (80012c4 <main+0x2a4>)
- 800106c:	4896      	ldr	r0, [pc, #600]	@ (80012c8 <main+0x2a8>)
+ 800106a:	4995      	ldr	r1, [pc, #596]	@ (80012c0 <main+0x2a0>)
+ 800106c:	4895      	ldr	r0, [pc, #596]	@ (80012c4 <main+0x2a4>)
  800106e:	f000 ff8d 	bl	8001f8c <HAL_ADC_Start_DMA>
 	  computeSTM_ADC_Voltages();
  8001072:	f7ff ff31 	bl	8000ed8 <computeSTM_ADC_Voltages>
 
 	  computeCH0(&MCP1);
- 8001076:	488f      	ldr	r0, [pc, #572]	@ (80012b4 <main+0x294>)
- 8001078:	f000 f9f2 	bl	8001460 <computeCH0>
+ 8001076:	488e      	ldr	r0, [pc, #568]	@ (80012b0 <main+0x290>)
+ 8001078:	f000 f9f0 	bl	800145c <computeCH0>
 	  computeCH1(&MCP1);
- 800107c:	488d      	ldr	r0, [pc, #564]	@ (80012b4 <main+0x294>)
- 800107e:	f000 fa07 	bl	8001490 <computeCH1>
+ 800107c:	488c      	ldr	r0, [pc, #560]	@ (80012b0 <main+0x290>)
+ 800107e:	f000 fa05 	bl	800148c <computeCH1>
 	  computeCH2(&MCP1);
- 8001082:	488c      	ldr	r0, [pc, #560]	@ (80012b4 <main+0x294>)
- 8001084:	f000 fa1c 	bl	80014c0 <computeCH2>
+ 8001082:	488b      	ldr	r0, [pc, #556]	@ (80012b0 <main+0x290>)
+ 8001084:	f000 fa1a 	bl	80014bc <computeCH2>
 	  computeCH3(&MCP1);
- 8001088:	488a      	ldr	r0, [pc, #552]	@ (80012b4 <main+0x294>)
- 800108a:	f000 fa31 	bl	80014f0 <computeCH3>
+ 8001088:	4889      	ldr	r0, [pc, #548]	@ (80012b0 <main+0x290>)
+ 800108a:	f000 fa2f 	bl	80014ec <computeCH3>
 
 	  computeCH0(&MCP2);
- 800108e:	488a      	ldr	r0, [pc, #552]	@ (80012b8 <main+0x298>)
- 8001090:	f000 f9e6 	bl	8001460 <computeCH0>
+ 800108e:	4889      	ldr	r0, [pc, #548]	@ (80012b4 <main+0x294>)
+ 8001090:	f000 f9e4 	bl	800145c <computeCH0>
 	  computeCH1(&MCP2);
- 8001094:	4888      	ldr	r0, [pc, #544]	@ (80012b8 <main+0x298>)
- 8001096:	f000 f9fb 	bl	8001490 <computeCH1>
+ 8001094:	4887      	ldr	r0, [pc, #540]	@ (80012b4 <main+0x294>)
+ 8001096:	f000 f9f9 	bl	800148c <computeCH1>
 	  computeCH2(&MCP2);
- 800109a:	4887      	ldr	r0, [pc, #540]	@ (80012b8 <main+0x298>)
- 800109c:	f000 fa10 	bl	80014c0 <computeCH2>
+ 800109a:	4886      	ldr	r0, [pc, #536]	@ (80012b4 <main+0x294>)
+ 800109c:	f000 fa0e 	bl	80014bc <computeCH2>
 	  computeCH3(&MCP2);
- 80010a0:	4885      	ldr	r0, [pc, #532]	@ (80012b8 <main+0x298>)
- 80010a2:	f000 fa25 	bl	80014f0 <computeCH3>
+ 80010a0:	4884      	ldr	r0, [pc, #528]	@ (80012b4 <main+0x294>)
+ 80010a2:	f000 fa23 	bl	80014ec <computeCH3>
 
 	  computeCH0(&MCP3);
- 80010a6:	4886      	ldr	r0, [pc, #536]	@ (80012c0 <main+0x2a0>)
- 80010a8:	f000 f9da 	bl	8001460 <computeCH0>
+ 80010a6:	4885      	ldr	r0, [pc, #532]	@ (80012bc <main+0x29c>)
+ 80010a8:	f000 f9d8 	bl	800145c <computeCH0>
 	  computeCH1(&MCP3);
- 80010ac:	4884      	ldr	r0, [pc, #528]	@ (80012c0 <main+0x2a0>)
- 80010ae:	f000 f9ef 	bl	8001490 <computeCH1>
+ 80010ac:	4883      	ldr	r0, [pc, #524]	@ (80012bc <main+0x29c>)
+ 80010ae:	f000 f9ed 	bl	800148c <computeCH1>
 	  computeCH2(&MCP3);
- 80010b2:	4883      	ldr	r0, [pc, #524]	@ (80012c0 <main+0x2a0>)
- 80010b4:	f000 fa04 	bl	80014c0 <computeCH2>
+ 80010b2:	4882      	ldr	r0, [pc, #520]	@ (80012bc <main+0x29c>)
+ 80010b4:	f000 fa02 	bl	80014bc <computeCH2>
 	  computeCH3(&MCP3);
- 80010b8:	4881      	ldr	r0, [pc, #516]	@ (80012c0 <main+0x2a0>)
- 80010ba:	f000 fa19 	bl	80014f0 <computeCH3>
+ 80010b8:	4880      	ldr	r0, [pc, #512]	@ (80012bc <main+0x29c>)
+ 80010ba:	f000 fa17 	bl	80014ec <computeCH3>
 
 	  // Index i corresponds to TEMP i+1
 	  temp_conversions[0] = voltageToTemp(MCP1.CH0_Voltage);
- 80010be:	4b7d      	ldr	r3, [pc, #500]	@ (80012b4 <main+0x294>)
+ 80010be:	4b7c      	ldr	r3, [pc, #496]	@ (80012b0 <main+0x290>)
  80010c0:	edd3 7a05 	vldr	s15, [r3, #20]
  80010c4:	eeb0 0a67 	vmov.f32	s0, s15
  80010c8:	f7ff ff2a 	bl	8000f20 <voltageToTemp>
  80010cc:	eef0 7a40 	vmov.f32	s15, s0
- 80010d0:	4b7e      	ldr	r3, [pc, #504]	@ (80012cc <main+0x2ac>)
+ 80010d0:	4b7d      	ldr	r3, [pc, #500]	@ (80012c8 <main+0x2a8>)
  80010d2:	edc3 7a00 	vstr	s15, [r3]
 	  temp_conversions[1] = voltageToTemp(MCP1.CH1_Voltage);
- 80010d6:	4b77      	ldr	r3, [pc, #476]	@ (80012b4 <main+0x294>)
+ 80010d6:	4b76      	ldr	r3, [pc, #472]	@ (80012b0 <main+0x290>)
  80010d8:	edd3 7a06 	vldr	s15, [r3, #24]
  80010dc:	eeb0 0a67 	vmov.f32	s0, s15
  80010e0:	f7ff ff1e 	bl	8000f20 <voltageToTemp>
  80010e4:	eef0 7a40 	vmov.f32	s15, s0
- 80010e8:	4b78      	ldr	r3, [pc, #480]	@ (80012cc <main+0x2ac>)
+ 80010e8:	4b77      	ldr	r3, [pc, #476]	@ (80012c8 <main+0x2a8>)
  80010ea:	edc3 7a01 	vstr	s15, [r3, #4]
 	  temp_conversions[2] = voltageToTemp(MCP1.CH2_Voltage);
- 80010ee:	4b71      	ldr	r3, [pc, #452]	@ (80012b4 <main+0x294>)
+ 80010ee:	4b70      	ldr	r3, [pc, #448]	@ (80012b0 <main+0x290>)
  80010f0:	edd3 7a07 	vldr	s15, [r3, #28]
  80010f4:	eeb0 0a67 	vmov.f32	s0, s15
  80010f8:	f7ff ff12 	bl	8000f20 <voltageToTemp>
  80010fc:	eef0 7a40 	vmov.f32	s15, s0
- 8001100:	4b72      	ldr	r3, [pc, #456]	@ (80012cc <main+0x2ac>)
+ 8001100:	4b71      	ldr	r3, [pc, #452]	@ (80012c8 <main+0x2a8>)
  8001102:	edc3 7a02 	vstr	s15, [r3, #8]
 	  temp_conversions[3] = voltageToTemp(MCP1.CH3_Voltage);
- 8001106:	4b6b      	ldr	r3, [pc, #428]	@ (80012b4 <main+0x294>)
+ 8001106:	4b6a      	ldr	r3, [pc, #424]	@ (80012b0 <main+0x290>)
  8001108:	edd3 7a08 	vldr	s15, [r3, #32]
  800110c:	eeb0 0a67 	vmov.f32	s0, s15
  8001110:	f7ff ff06 	bl	8000f20 <voltageToTemp>
  8001114:	eef0 7a40 	vmov.f32	s15, s0
- 8001118:	4b6c      	ldr	r3, [pc, #432]	@ (80012cc <main+0x2ac>)
+ 8001118:	4b6b      	ldr	r3, [pc, #428]	@ (80012c8 <main+0x2a8>)
  800111a:	edc3 7a03 	vstr	s15, [r3, #12]
 
 	  temp_conversions[4] = voltageToTemp(MCP2.CH0_Voltage);
- 800111e:	4b66      	ldr	r3, [pc, #408]	@ (80012b8 <main+0x298>)
+ 800111e:	4b65      	ldr	r3, [pc, #404]	@ (80012b4 <main+0x294>)
  8001120:	edd3 7a05 	vldr	s15, [r3, #20]
  8001124:	eeb0 0a67 	vmov.f32	s0, s15
  8001128:	f7ff fefa 	bl	8000f20 <voltageToTemp>
  800112c:	eef0 7a40 	vmov.f32	s15, s0
- 8001130:	4b66      	ldr	r3, [pc, #408]	@ (80012cc <main+0x2ac>)
+ 8001130:	4b65      	ldr	r3, [pc, #404]	@ (80012c8 <main+0x2a8>)
  8001132:	edc3 7a04 	vstr	s15, [r3, #16]
 	  temp_conversions[5] = voltageToTemp(MCP2.CH1_Voltage);
- 8001136:	4b60      	ldr	r3, [pc, #384]	@ (80012b8 <main+0x298>)
+ 8001136:	4b5f      	ldr	r3, [pc, #380]	@ (80012b4 <main+0x294>)
  8001138:	edd3 7a06 	vldr	s15, [r3, #24]
  800113c:	eeb0 0a67 	vmov.f32	s0, s15
  8001140:	f7ff feee 	bl	8000f20 <voltageToTemp>
  8001144:	eef0 7a40 	vmov.f32	s15, s0
- 8001148:	4b60      	ldr	r3, [pc, #384]	@ (80012cc <main+0x2ac>)
+ 8001148:	4b5f      	ldr	r3, [pc, #380]	@ (80012c8 <main+0x2a8>)
  800114a:	edc3 7a05 	vstr	s15, [r3, #20]
 	  temp_conversions[6] = voltageToTemp(MCP2.CH2_Voltage);
- 800114e:	4b5a      	ldr	r3, [pc, #360]	@ (80012b8 <main+0x298>)
+ 800114e:	4b59      	ldr	r3, [pc, #356]	@ (80012b4 <main+0x294>)
  8001150:	edd3 7a07 	vldr	s15, [r3, #28]
  8001154:	eeb0 0a67 	vmov.f32	s0, s15
  8001158:	f7ff fee2 	bl	8000f20 <voltageToTemp>
  800115c:	eef0 7a40 	vmov.f32	s15, s0
- 8001160:	4b5a      	ldr	r3, [pc, #360]	@ (80012cc <main+0x2ac>)
+ 8001160:	4b59      	ldr	r3, [pc, #356]	@ (80012c8 <main+0x2a8>)
  8001162:	edc3 7a06 	vstr	s15, [r3, #24]
 	  temp_conversions[7] = voltageToTemp(MCP2.CH3_Voltage);
- 8001166:	4b54      	ldr	r3, [pc, #336]	@ (80012b8 <main+0x298>)
+ 8001166:	4b53      	ldr	r3, [pc, #332]	@ (80012b4 <main+0x294>)
  8001168:	edd3 7a08 	vldr	s15, [r3, #32]
  800116c:	eeb0 0a67 	vmov.f32	s0, s15
  8001170:	f7ff fed6 	bl	8000f20 <voltageToTemp>
  8001174:	eef0 7a40 	vmov.f32	s15, s0
- 8001178:	4b54      	ldr	r3, [pc, #336]	@ (80012cc <main+0x2ac>)
+ 8001178:	4b53      	ldr	r3, [pc, #332]	@ (80012c8 <main+0x2a8>)
  800117a:	edc3 7a07 	vstr	s15, [r3, #28]
 
 	  temp_conversions[8] = voltageToTemp(MCP3.CH0_Voltage);
- 800117e:	4b50      	ldr	r3, [pc, #320]	@ (80012c0 <main+0x2a0>)
+ 800117e:	4b4f      	ldr	r3, [pc, #316]	@ (80012bc <main+0x29c>)
  8001180:	edd3 7a05 	vldr	s15, [r3, #20]
  8001184:	eeb0 0a67 	vmov.f32	s0, s15
  8001188:	f7ff feca 	bl	8000f20 <voltageToTemp>
  800118c:	eef0 7a40 	vmov.f32	s15, s0
- 8001190:	4b4e      	ldr	r3, [pc, #312]	@ (80012cc <main+0x2ac>)
+ 8001190:	4b4d      	ldr	r3, [pc, #308]	@ (80012c8 <main+0x2a8>)
  8001192:	edc3 7a08 	vstr	s15, [r3, #32]
 	  temp_conversions[9] = voltageToTemp(MCP3.CH1_Voltage);
- 8001196:	4b4a      	ldr	r3, [pc, #296]	@ (80012c0 <main+0x2a0>)
+ 8001196:	4b49      	ldr	r3, [pc, #292]	@ (80012bc <main+0x29c>)
  8001198:	edd3 7a06 	vldr	s15, [r3, #24]
  800119c:	eeb0 0a67 	vmov.f32	s0, s15
  80011a0:	f7ff febe 	bl	8000f20 <voltageToTemp>
  80011a4:	eef0 7a40 	vmov.f32	s15, s0
- 80011a8:	4b48      	ldr	r3, [pc, #288]	@ (80012cc <main+0x2ac>)
+ 80011a8:	4b47      	ldr	r3, [pc, #284]	@ (80012c8 <main+0x2a8>)
  80011aa:	edc3 7a09 	vstr	s15, [r3, #36]	@ 0x24
 	  temp_conversions[10] = voltageToTemp(MCP3.CH2_Voltage);
- 80011ae:	4b44      	ldr	r3, [pc, #272]	@ (80012c0 <main+0x2a0>)
+ 80011ae:	4b43      	ldr	r3, [pc, #268]	@ (80012bc <main+0x29c>)
  80011b0:	edd3 7a07 	vldr	s15, [r3, #28]
  80011b4:	eeb0 0a67 	vmov.f32	s0, s15
  80011b8:	f7ff feb2 	bl	8000f20 <voltageToTemp>
  80011bc:	eef0 7a40 	vmov.f32	s15, s0
- 80011c0:	4b42      	ldr	r3, [pc, #264]	@ (80012cc <main+0x2ac>)
+ 80011c0:	4b41      	ldr	r3, [pc, #260]	@ (80012c8 <main+0x2a8>)
  80011c2:	edc3 7a0a 	vstr	s15, [r3, #40]	@ 0x28
 	  temp_conversions[11] = voltageToTemp(MCP3.CH3_Voltage);
- 80011c6:	4b3e      	ldr	r3, [pc, #248]	@ (80012c0 <main+0x2a0>)
+ 80011c6:	4b3d      	ldr	r3, [pc, #244]	@ (80012bc <main+0x29c>)
  80011c8:	edd3 7a08 	vldr	s15, [r3, #32]
  80011cc:	eeb0 0a67 	vmov.f32	s0, s15
  80011d0:	f7ff fea6 	bl	8000f20 <voltageToTemp>
  80011d4:	eef0 7a40 	vmov.f32	s15, s0
- 80011d8:	4b3c      	ldr	r3, [pc, #240]	@ (80012cc <main+0x2ac>)
+ 80011d8:	4b3b      	ldr	r3, [pc, #236]	@ (80012c8 <main+0x2a8>)
  80011da:	edc3 7a0b 	vstr	s15, [r3, #44]	@ 0x2c
 
 	  temp_conversions[12] = voltageToTemp(voltageBuffer[0]);
- 80011de:	4b3c      	ldr	r3, [pc, #240]	@ (80012d0 <main+0x2b0>)
+ 80011de:	4b3b      	ldr	r3, [pc, #236]	@ (80012cc <main+0x2ac>)
  80011e0:	edd3 7a00 	vldr	s15, [r3]
  80011e4:	eeb0 0a67 	vmov.f32	s0, s15
  80011e8:	f7ff fe9a 	bl	8000f20 <voltageToTemp>
  80011ec:	eef0 7a40 	vmov.f32	s15, s0
- 80011f0:	4b36      	ldr	r3, [pc, #216]	@ (80012cc <main+0x2ac>)
+ 80011f0:	4b35      	ldr	r3, [pc, #212]	@ (80012c8 <main+0x2a8>)
  80011f2:	edc3 7a0c 	vstr	s15, [r3, #48]	@ 0x30
 	  temp_conversions[13] = voltageToTemp(voltageBuffer[1]);
- 80011f6:	4b36      	ldr	r3, [pc, #216]	@ (80012d0 <main+0x2b0>)
+ 80011f6:	4b35      	ldr	r3, [pc, #212]	@ (80012cc <main+0x2ac>)
  80011f8:	edd3 7a01 	vldr	s15, [r3, #4]
  80011fc:	eeb0 0a67 	vmov.f32	s0, s15
  8001200:	f7ff fe8e 	bl	8000f20 <voltageToTemp>
  8001204:	eef0 7a40 	vmov.f32	s15, s0
- 8001208:	4b30      	ldr	r3, [pc, #192]	@ (80012cc <main+0x2ac>)
+ 8001208:	4b2f      	ldr	r3, [pc, #188]	@ (80012c8 <main+0x2a8>)
  800120a:	edc3 7a0d 	vstr	s15, [r3, #52]	@ 0x34
 	  temp_conversions[14] = voltageToTemp(voltageBuffer[2]);
- 800120e:	4b30      	ldr	r3, [pc, #192]	@ (80012d0 <main+0x2b0>)
+ 800120e:	4b2f      	ldr	r3, [pc, #188]	@ (80012cc <main+0x2ac>)
  8001210:	edd3 7a02 	vldr	s15, [r3, #8]
  8001214:	eeb0 0a67 	vmov.f32	s0, s15
  8001218:	f7ff fe82 	bl	8000f20 <voltageToTemp>
  800121c:	eef0 7a40 	vmov.f32	s15, s0
- 8001220:	4b2a      	ldr	r3, [pc, #168]	@ (80012cc <main+0x2ac>)
+ 8001220:	4b29      	ldr	r3, [pc, #164]	@ (80012c8 <main+0x2a8>)
  8001222:	edc3 7a0e 	vstr	s15, [r3, #56]	@ 0x38
 	  temp_conversions[15] = voltageToTemp(voltageBuffer[3]);
- 8001226:	4b2a      	ldr	r3, [pc, #168]	@ (80012d0 <main+0x2b0>)
+ 8001226:	4b29      	ldr	r3, [pc, #164]	@ (80012cc <main+0x2ac>)
  8001228:	edd3 7a03 	vldr	s15, [r3, #12]
  800122c:	eeb0 0a67 	vmov.f32	s0, s15
  8001230:	f7ff fe76 	bl	8000f20 <voltageToTemp>
  8001234:	eef0 7a40 	vmov.f32	s15, s0
- 8001238:	4b24      	ldr	r3, [pc, #144]	@ (80012cc <main+0x2ac>)
+ 8001238:	4b23      	ldr	r3, [pc, #140]	@ (80012c8 <main+0x2a8>)
  800123a:	edc3 7a0f 	vstr	s15, [r3, #60]	@ 0x3c
 	  temp_conversions[16] = voltageToTemp(voltageBuffer[4]);
- 800123e:	4b24      	ldr	r3, [pc, #144]	@ (80012d0 <main+0x2b0>)
+ 800123e:	4b23      	ldr	r3, [pc, #140]	@ (80012cc <main+0x2ac>)
  8001240:	edd3 7a04 	vldr	s15, [r3, #16]
  8001244:	eeb0 0a67 	vmov.f32	s0, s15
  8001248:	f7ff fe6a 	bl	8000f20 <voltageToTemp>
  800124c:	eef0 7a40 	vmov.f32	s15, s0
- 8001250:	4b1e      	ldr	r3, [pc, #120]	@ (80012cc <main+0x2ac>)
+ 8001250:	4b1d      	ldr	r3, [pc, #116]	@ (80012c8 <main+0x2a8>)
  8001252:	edc3 7a10 	vstr	s15, [r3, #64]	@ 0x40
 	  temp_conversions[17] = voltageToTemp(voltageBuffer[5]);
- 8001256:	4b1e      	ldr	r3, [pc, #120]	@ (80012d0 <main+0x2b0>)
+ 8001256:	4b1d      	ldr	r3, [pc, #116]	@ (80012cc <main+0x2ac>)
  8001258:	edd3 7a05 	vldr	s15, [r3, #20]
  800125c:	eeb0 0a67 	vmov.f32	s0, s15
  8001260:	f7ff fe5e 	bl	8000f20 <voltageToTemp>
  8001264:	eef0 7a40 	vmov.f32	s15, s0
- 8001268:	4b18      	ldr	r3, [pc, #96]	@ (80012cc <main+0x2ac>)
+ 8001268:	4b17      	ldr	r3, [pc, #92]	@ (80012c8 <main+0x2a8>)
  800126a:	edc3 7a11 	vstr	s15, [r3, #68]	@ 0x44
 	  temp_conversions[18] = voltageToTemp(voltageBuffer[6]);
- 800126e:	4b18      	ldr	r3, [pc, #96]	@ (80012d0 <main+0x2b0>)
+ 800126e:	4b17      	ldr	r3, [pc, #92]	@ (80012cc <main+0x2ac>)
  8001270:	edd3 7a06 	vldr	s15, [r3, #24]
  8001274:	eeb0 0a67 	vmov.f32	s0, s15
  8001278:	f7ff fe52 	bl	8000f20 <voltageToTemp>
  800127c:	eef0 7a40 	vmov.f32	s15, s0
- 8001280:	4b12      	ldr	r3, [pc, #72]	@ (80012cc <main+0x2ac>)
+ 8001280:	4b11      	ldr	r3, [pc, #68]	@ (80012c8 <main+0x2a8>)
  8001282:	edc3 7a12 	vstr	s15, [r3, #72]	@ 0x48
 	  temp_conversions[19] = voltageToTemp(voltageBuffer[7]);
- 8001286:	4b12      	ldr	r3, [pc, #72]	@ (80012d0 <main+0x2b0>)
+ 8001286:	4b11      	ldr	r3, [pc, #68]	@ (80012cc <main+0x2ac>)
  8001288:	edd3 7a07 	vldr	s15, [r3, #28]
  800128c:	eeb0 0a67 	vmov.f32	s0, s15
  8001290:	f7ff fe46 	bl	8000f20 <voltageToTemp>
  8001294:	eef0 7a40 	vmov.f32	s15, s0
- 8001298:	4b0c      	ldr	r3, [pc, #48]	@ (80012cc <main+0x2ac>)
+ 8001298:	4b0b      	ldr	r3, [pc, #44]	@ (80012c8 <main+0x2a8>)
  800129a:	edc3 7a13 	vstr	s15, [r3, #76]	@ 0x4c
 
-	   HAL_Delay(1000);
- 800129e:	f44f 707a 	mov.w	r0, #1000	@ 0x3e8
- 80012a2:	f000 fb45 	bl	8001930 <HAL_Delay>
+	   HAL_Delay(50);
+ 800129e:	2032      	movs	r0, #50	@ 0x32
+ 80012a0:	f000 fb46 	bl	8001930 <HAL_Delay>
 	  HAL_ADC_Start_DMA(&hadc1, (uint32_t*) rawADCBuffer, 8);
- 80012a6:	bf00      	nop
- 80012a8:	e6de      	b.n	8001068 <main+0x48>
- 80012aa:	bf00      	nop
- 80012ac:	48000800 	.word	0x48000800
- 80012b0:	200001f4 	.word	0x200001f4
- 80012b4:	200000fc 	.word	0x200000fc
- 80012b8:	20000124 	.word	0x20000124
- 80012bc:	48000400 	.word	0x48000400
- 80012c0:	2000014c 	.word	0x2000014c
- 80012c4:	20000174 	.word	0x20000174
- 80012c8:	20000028 	.word	0x20000028
- 80012cc:	200001a4 	.word	0x200001a4
- 80012d0:	20000184 	.word	0x20000184
+ 80012a4:	bf00      	nop
+ 80012a6:	e6df      	b.n	8001068 <main+0x48>
+ 80012a8:	48000800 	.word	0x48000800
+ 80012ac:	200001f4 	.word	0x200001f4
+ 80012b0:	200000fc 	.word	0x200000fc
+ 80012b4:	20000124 	.word	0x20000124
+ 80012b8:	48000400 	.word	0x48000400
+ 80012bc:	2000014c 	.word	0x2000014c
+ 80012c0:	20000174 	.word	0x20000174
+ 80012c4:	20000028 	.word	0x20000028
+ 80012c8:	200001a4 	.word	0x200001a4
+ 80012cc:	20000184 	.word	0x20000184
 
-080012d4 <SystemClock_Config>:
+080012d0 <SystemClock_Config>:
 /**
   * @brief System Clock Configuration
   * @retval None
   */
 void SystemClock_Config(void)
 {
- 80012d4:	b580      	push	{r7, lr}
- 80012d6:	b096      	sub	sp, #88	@ 0x58
- 80012d8:	af00      	add	r7, sp, #0
+ 80012d0:	b580      	push	{r7, lr}
+ 80012d2:	b096      	sub	sp, #88	@ 0x58
+ 80012d4:	af00      	add	r7, sp, #0
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
- 80012da:	f107 0314 	add.w	r3, r7, #20
- 80012de:	2244      	movs	r2, #68	@ 0x44
- 80012e0:	2100      	movs	r1, #0
- 80012e2:	4618      	mov	r0, r3
- 80012e4:	f003 feea 	bl	80050bc <memset>
+ 80012d6:	f107 0314 	add.w	r3, r7, #20
+ 80012da:	2244      	movs	r2, #68	@ 0x44
+ 80012dc:	2100      	movs	r1, #0
+ 80012de:	4618      	mov	r0, r3
+ 80012e0:	f003 feec 	bl	80050bc <memset>
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
- 80012e8:	463b      	mov	r3, r7
- 80012ea:	2200      	movs	r2, #0
- 80012ec:	601a      	str	r2, [r3, #0]
- 80012ee:	605a      	str	r2, [r3, #4]
- 80012f0:	609a      	str	r2, [r3, #8]
- 80012f2:	60da      	str	r2, [r3, #12]
- 80012f4:	611a      	str	r2, [r3, #16]
+ 80012e4:	463b      	mov	r3, r7
+ 80012e6:	2200      	movs	r2, #0
+ 80012e8:	601a      	str	r2, [r3, #0]
+ 80012ea:	605a      	str	r2, [r3, #4]
+ 80012ec:	609a      	str	r2, [r3, #8]
+ 80012ee:	60da      	str	r2, [r3, #12]
+ 80012f0:	611a      	str	r2, [r3, #16]
 
   /** Configure the main internal regulator output voltage
   */
   if (HAL_PWREx_ControlVoltageScaling(PWR_REGULATOR_VOLTAGE_SCALE1) != HAL_OK)
- 80012f6:	f44f 7000 	mov.w	r0, #512	@ 0x200
- 80012fa:	f002 f97b 	bl	80035f4 <HAL_PWREx_ControlVoltageScaling>
- 80012fe:	4603      	mov	r3, r0
- 8001300:	2b00      	cmp	r3, #0
- 8001302:	d001      	beq.n	8001308 <SystemClock_Config+0x34>
+ 80012f2:	f44f 7000 	mov.w	r0, #512	@ 0x200
+ 80012f6:	f002 f97d 	bl	80035f4 <HAL_PWREx_ControlVoltageScaling>
+ 80012fa:	4603      	mov	r3, r0
+ 80012fc:	2b00      	cmp	r3, #0
+ 80012fe:	d001      	beq.n	8001304 <SystemClock_Config+0x34>
   {
     Error_Handler();
- 8001304:	f000 f82c 	bl	8001360 <Error_Handler>
+ 8001300:	f000 f82c 	bl	800135c <Error_Handler>
   }
 
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
   */
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_MSI;
- 8001308:	2310      	movs	r3, #16
- 800130a:	617b      	str	r3, [r7, #20]
+ 8001304:	2310      	movs	r3, #16
+ 8001306:	617b      	str	r3, [r7, #20]
   RCC_OscInitStruct.MSIState = RCC_MSI_ON;
- 800130c:	2301      	movs	r3, #1
- 800130e:	62fb      	str	r3, [r7, #44]	@ 0x2c
+ 8001308:	2301      	movs	r3, #1
+ 800130a:	62fb      	str	r3, [r7, #44]	@ 0x2c
   RCC_OscInitStruct.MSICalibrationValue = 0;
- 8001310:	2300      	movs	r3, #0
- 8001312:	633b      	str	r3, [r7, #48]	@ 0x30
+ 800130c:	2300      	movs	r3, #0
+ 800130e:	633b      	str	r3, [r7, #48]	@ 0x30
   RCC_OscInitStruct.MSIClockRange = RCC_MSIRANGE_6;
- 8001314:	2360      	movs	r3, #96	@ 0x60
- 8001316:	637b      	str	r3, [r7, #52]	@ 0x34
+ 8001310:	2360      	movs	r3, #96	@ 0x60
+ 8001312:	637b      	str	r3, [r7, #52]	@ 0x34
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_NONE;
- 8001318:	2300      	movs	r3, #0
- 800131a:	63fb      	str	r3, [r7, #60]	@ 0x3c
+ 8001314:	2300      	movs	r3, #0
+ 8001316:	63fb      	str	r3, [r7, #60]	@ 0x3c
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
- 800131c:	f107 0314 	add.w	r3, r7, #20
- 8001320:	4618      	mov	r0, r3
- 8001322:	f002 f9bd 	bl	80036a0 <HAL_RCC_OscConfig>
- 8001326:	4603      	mov	r3, r0
- 8001328:	2b00      	cmp	r3, #0
- 800132a:	d001      	beq.n	8001330 <SystemClock_Config+0x5c>
+ 8001318:	f107 0314 	add.w	r3, r7, #20
+ 800131c:	4618      	mov	r0, r3
+ 800131e:	f002 f9bf 	bl	80036a0 <HAL_RCC_OscConfig>
+ 8001322:	4603      	mov	r3, r0
+ 8001324:	2b00      	cmp	r3, #0
+ 8001326:	d001      	beq.n	800132c <SystemClock_Config+0x5c>
   {
     Error_Handler();
- 800132c:	f000 f818 	bl	8001360 <Error_Handler>
+ 8001328:	f000 f818 	bl	800135c <Error_Handler>
   }
 
   /** Initializes the CPU, AHB and APB buses clocks
   */
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
- 8001330:	230f      	movs	r3, #15
- 8001332:	603b      	str	r3, [r7, #0]
+ 800132c:	230f      	movs	r3, #15
+ 800132e:	603b      	str	r3, [r7, #0]
                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_MSI;
- 8001334:	2300      	movs	r3, #0
- 8001336:	607b      	str	r3, [r7, #4]
+ 8001330:	2300      	movs	r3, #0
+ 8001332:	607b      	str	r3, [r7, #4]
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
- 8001338:	2300      	movs	r3, #0
- 800133a:	60bb      	str	r3, [r7, #8]
+ 8001334:	2300      	movs	r3, #0
+ 8001336:	60bb      	str	r3, [r7, #8]
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
- 800133c:	2300      	movs	r3, #0
- 800133e:	60fb      	str	r3, [r7, #12]
+ 8001338:	2300      	movs	r3, #0
+ 800133a:	60fb      	str	r3, [r7, #12]
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
- 8001340:	2300      	movs	r3, #0
- 8001342:	613b      	str	r3, [r7, #16]
+ 800133c:	2300      	movs	r3, #0
+ 800133e:	613b      	str	r3, [r7, #16]
 
   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_0) != HAL_OK)
- 8001344:	463b      	mov	r3, r7
- 8001346:	2100      	movs	r1, #0
- 8001348:	4618      	mov	r0, r3
- 800134a:	f002 fdbd 	bl	8003ec8 <HAL_RCC_ClockConfig>
- 800134e:	4603      	mov	r3, r0
- 8001350:	2b00      	cmp	r3, #0
- 8001352:	d001      	beq.n	8001358 <SystemClock_Config+0x84>
+ 8001340:	463b      	mov	r3, r7
+ 8001342:	2100      	movs	r1, #0
+ 8001344:	4618      	mov	r0, r3
+ 8001346:	f002 fdbf 	bl	8003ec8 <HAL_RCC_ClockConfig>
+ 800134a:	4603      	mov	r3, r0
+ 800134c:	2b00      	cmp	r3, #0
+ 800134e:	d001      	beq.n	8001354 <SystemClock_Config+0x84>
   {
     Error_Handler();
- 8001354:	f000 f804 	bl	8001360 <Error_Handler>
+ 8001350:	f000 f804 	bl	800135c <Error_Handler>
   }
 }
- 8001358:	bf00      	nop
- 800135a:	3758      	adds	r7, #88	@ 0x58
- 800135c:	46bd      	mov	sp, r7
- 800135e:	bd80      	pop	{r7, pc}
+ 8001354:	bf00      	nop
+ 8001356:	3758      	adds	r7, #88	@ 0x58
+ 8001358:	46bd      	mov	sp, r7
+ 800135a:	bd80      	pop	{r7, pc}
 
-08001360 <Error_Handler>:
+0800135c <Error_Handler>:
 /**
   * @brief  This function is executed in case of error occurrence.
   * @retval None
   */
 void Error_Handler(void)
 {
- 8001360:	b480      	push	{r7}
- 8001362:	af00      	add	r7, sp, #0
+ 800135c:	b480      	push	{r7}
+ 800135e:	af00      	add	r7, sp, #0
   \details Disables IRQ interrupts by setting the I-bit in the CPSR.
            Can only be executed in Privileged modes.
  */
 __STATIC_FORCEINLINE void __disable_irq(void)
 {
   __ASM volatile ("cpsid i" : : : "memory");
- 8001364:	b672      	cpsid	i
+ 8001360:	b672      	cpsid	i
 }
- 8001366:	bf00      	nop
+ 8001362:	bf00      	nop
   /* USER CODE BEGIN Error_Handler_Debug */
   /* User can add his own implementation to report the HAL error return state */
   __disable_irq();
   while (1)
- 8001368:	bf00      	nop
- 800136a:	e7fd      	b.n	8001368 <Error_Handler+0x8>
+ 8001364:	bf00      	nop
+ 8001366:	e7fd      	b.n	8001364 <Error_Handler+0x8>
 
-0800136c <initMCP>:
+08001368 <initMCP>:
 // */
 
 
 #include "mcp3204.h"
 
 void initMCP(MCP3204* mcp, SPI_HandleTypeDef* spi, GPIO_TypeDef* port, uint16_t pin) {
- 800136c:	b580      	push	{r7, lr}
- 800136e:	b084      	sub	sp, #16
- 8001370:	af00      	add	r7, sp, #0
- 8001372:	60f8      	str	r0, [r7, #12]
- 8001374:	60b9      	str	r1, [r7, #8]
- 8001376:	607a      	str	r2, [r7, #4]
- 8001378:	807b      	strh	r3, [r7, #2]
+ 8001368:	b580      	push	{r7, lr}
+ 800136a:	b084      	sub	sp, #16
+ 800136c:	af00      	add	r7, sp, #0
+ 800136e:	60f8      	str	r0, [r7, #12]
+ 8001370:	60b9      	str	r1, [r7, #8]
+ 8001372:	607a      	str	r2, [r7, #4]
+ 8001374:	807b      	strh	r3, [r7, #2]
 	mcp->spiInstance = spi;
- 800137a:	68fb      	ldr	r3, [r7, #12]
- 800137c:	68ba      	ldr	r2, [r7, #8]
- 800137e:	601a      	str	r2, [r3, #0]
+ 8001376:	68fb      	ldr	r3, [r7, #12]
+ 8001378:	68ba      	ldr	r2, [r7, #8]
+ 800137a:	601a      	str	r2, [r3, #0]
 	mcp->CS_PORT = port;
- 8001380:	68fb      	ldr	r3, [r7, #12]
- 8001382:	687a      	ldr	r2, [r7, #4]
- 8001384:	605a      	str	r2, [r3, #4]
+ 800137c:	68fb      	ldr	r3, [r7, #12]
+ 800137e:	687a      	ldr	r2, [r7, #4]
+ 8001380:	605a      	str	r2, [r3, #4]
 	mcp->CS_PIN = pin;
- 8001386:	68fb      	ldr	r3, [r7, #12]
- 8001388:	887a      	ldrh	r2, [r7, #2]
- 800138a:	811a      	strh	r2, [r3, #8]
+ 8001382:	68fb      	ldr	r3, [r7, #12]
+ 8001384:	887a      	ldrh	r2, [r7, #2]
+ 8001386:	811a      	strh	r2, [r3, #8]
 
 	mcp->config.bits.RESV = RESV_BIT; // Fixed at 0
- 800138c:	68fa      	ldr	r2, [r7, #12]
- 800138e:	f892 3024 	ldrb.w	r3, [r2, #36]	@ 0x24
- 8001392:	f023 0301 	bic.w	r3, r3, #1
- 8001396:	f882 3024 	strb.w	r3, [r2, #36]	@ 0x24
+ 8001388:	68fa      	ldr	r2, [r7, #12]
+ 800138a:	f892 3024 	ldrb.w	r3, [r2, #36]	@ 0x24
+ 800138e:	f023 0301 	bic.w	r3, r3, #1
+ 8001392:	f882 3024 	strb.w	r3, [r2, #36]	@ 0x24
 	mcp->config.bits.START = START_BIT; // Fixed at 1
- 800139a:	68fa      	ldr	r2, [r7, #12]
- 800139c:	f892 3024 	ldrb.w	r3, [r2, #36]	@ 0x24
- 80013a0:	f043 0320 	orr.w	r3, r3, #32
- 80013a4:	f882 3024 	strb.w	r3, [r2, #36]	@ 0x24
+ 8001396:	68fa      	ldr	r2, [r7, #12]
+ 8001398:	f892 3024 	ldrb.w	r3, [r2, #36]	@ 0x24
+ 800139c:	f043 0320 	orr.w	r3, r3, #32
+ 80013a0:	f882 3024 	strb.w	r3, [r2, #36]	@ 0x24
 
 	mcp->txData[1] = 0;
- 80013a8:	68fb      	ldr	r3, [r7, #12]
- 80013aa:	2200      	movs	r2, #0
- 80013ac:	72da      	strb	r2, [r3, #11]
+ 80013a4:	68fb      	ldr	r3, [r7, #12]
+ 80013a6:	2200      	movs	r2, #0
+ 80013a8:	72da      	strb	r2, [r3, #11]
 	mcp->txData[2] = 0;
- 80013ae:	68fb      	ldr	r3, [r7, #12]
- 80013b0:	2200      	movs	r2, #0
- 80013b2:	731a      	strb	r2, [r3, #12]
+ 80013aa:	68fb      	ldr	r3, [r7, #12]
+ 80013ac:	2200      	movs	r2, #0
+ 80013ae:	731a      	strb	r2, [r3, #12]
 	mcp->txData[3] = 0;
- 80013b4:	68fb      	ldr	r3, [r7, #12]
- 80013b6:	2200      	movs	r2, #0
- 80013b8:	735a      	strb	r2, [r3, #13]
+ 80013b0:	68fb      	ldr	r3, [r7, #12]
+ 80013b2:	2200      	movs	r2, #0
+ 80013b4:	735a      	strb	r2, [r3, #13]
 
 	HAL_GPIO_WritePin(mcp->CS_PORT, mcp->CS_PIN, GPIO_PIN_SET); // Assert it high
+ 80013b6:	68fb      	ldr	r3, [r7, #12]
+ 80013b8:	6858      	ldr	r0, [r3, #4]
  80013ba:	68fb      	ldr	r3, [r7, #12]
- 80013bc:	6858      	ldr	r0, [r3, #4]
- 80013be:	68fb      	ldr	r3, [r7, #12]
- 80013c0:	891b      	ldrh	r3, [r3, #8]
- 80013c2:	2201      	movs	r2, #1
- 80013c4:	4619      	mov	r1, r3
- 80013c6:	f002 f8ef 	bl	80035a8 <HAL_GPIO_WritePin>
+ 80013bc:	891b      	ldrh	r3, [r3, #8]
+ 80013be:	2201      	movs	r2, #1
+ 80013c0:	4619      	mov	r1, r3
+ 80013c2:	f002 f8f1 	bl	80035a8 <HAL_GPIO_WritePin>
 }
- 80013ca:	bf00      	nop
- 80013cc:	3710      	adds	r7, #16
- 80013ce:	46bd      	mov	sp, r7
- 80013d0:	bd80      	pop	{r7, pc}
+ 80013c6:	bf00      	nop
+ 80013c8:	3710      	adds	r7, #16
+ 80013ca:	46bd      	mov	sp, r7
+ 80013cc:	bd80      	pop	{r7, pc}
 
-080013d2 <getADCValue>:
+080013ce <getADCValue>:
 
 void getADCValue(MCP3204* mcp) {
- 80013d2:	b580      	push	{r7, lr}
- 80013d4:	b086      	sub	sp, #24
- 80013d6:	af02      	add	r7, sp, #8
- 80013d8:	6078      	str	r0, [r7, #4]
+ 80013ce:	b580      	push	{r7, lr}
+ 80013d0:	b086      	sub	sp, #24
+ 80013d2:	af02      	add	r7, sp, #8
+ 80013d4:	6078      	str	r0, [r7, #4]
 	// Assume desired channel has been selected already...
 	mcp->txData[0] = mcp->config.byte;
- 80013da:	687b      	ldr	r3, [r7, #4]
- 80013dc:	f893 2024 	ldrb.w	r2, [r3, #36]	@ 0x24
- 80013e0:	687b      	ldr	r3, [r7, #4]
- 80013e2:	729a      	strb	r2, [r3, #10]
+ 80013d6:	687b      	ldr	r3, [r7, #4]
+ 80013d8:	f893 2024 	ldrb.w	r2, [r3, #36]	@ 0x24
+ 80013dc:	687b      	ldr	r3, [r7, #4]
+ 80013de:	729a      	strb	r2, [r3, #10]
 
 	mcp->rxData[0] = 0;
- 80013e4:	687b      	ldr	r3, [r7, #4]
- 80013e6:	2200      	movs	r2, #0
- 80013e8:	739a      	strb	r2, [r3, #14]
+ 80013e0:	687b      	ldr	r3, [r7, #4]
+ 80013e2:	2200      	movs	r2, #0
+ 80013e4:	739a      	strb	r2, [r3, #14]
 	mcp->rxData[1] = 0;
- 80013ea:	687b      	ldr	r3, [r7, #4]
- 80013ec:	2200      	movs	r2, #0
- 80013ee:	73da      	strb	r2, [r3, #15]
+ 80013e6:	687b      	ldr	r3, [r7, #4]
+ 80013e8:	2200      	movs	r2, #0
+ 80013ea:	73da      	strb	r2, [r3, #15]
 	mcp->rxData[2] = 0;
- 80013f0:	687b      	ldr	r3, [r7, #4]
- 80013f2:	2200      	movs	r2, #0
- 80013f4:	741a      	strb	r2, [r3, #16]
+ 80013ec:	687b      	ldr	r3, [r7, #4]
+ 80013ee:	2200      	movs	r2, #0
+ 80013f0:	741a      	strb	r2, [r3, #16]
 	mcp->rxData[3] = 0;
- 80013f6:	687b      	ldr	r3, [r7, #4]
- 80013f8:	2200      	movs	r2, #0
- 80013fa:	745a      	strb	r2, [r3, #17]
+ 80013f2:	687b      	ldr	r3, [r7, #4]
+ 80013f4:	2200      	movs	r2, #0
+ 80013f6:	745a      	strb	r2, [r3, #17]
 
 	HAL_GPIO_WritePin(mcp->CS_PORT, mcp->CS_PIN, GPIO_PIN_RESET);
+ 80013f8:	687b      	ldr	r3, [r7, #4]
+ 80013fa:	6858      	ldr	r0, [r3, #4]
  80013fc:	687b      	ldr	r3, [r7, #4]
- 80013fe:	6858      	ldr	r0, [r3, #4]
- 8001400:	687b      	ldr	r3, [r7, #4]
- 8001402:	891b      	ldrh	r3, [r3, #8]
- 8001404:	2200      	movs	r2, #0
- 8001406:	4619      	mov	r1, r3
- 8001408:	f002 f8ce 	bl	80035a8 <HAL_GPIO_WritePin>
+ 80013fe:	891b      	ldrh	r3, [r3, #8]
+ 8001400:	2200      	movs	r2, #0
+ 8001402:	4619      	mov	r1, r3
+ 8001404:	f002 f8d0 	bl	80035a8 <HAL_GPIO_WritePin>
 	HAL_SPI_TransmitReceive(mcp->spiInstance, mcp->txData, mcp->rxData, 4, HAL_MAX_DELAY);
+ 8001408:	687b      	ldr	r3, [r7, #4]
+ 800140a:	6818      	ldr	r0, [r3, #0]
  800140c:	687b      	ldr	r3, [r7, #4]
- 800140e:	6818      	ldr	r0, [r3, #0]
- 8001410:	687b      	ldr	r3, [r7, #4]
- 8001412:	f103 010a 	add.w	r1, r3, #10
- 8001416:	687b      	ldr	r3, [r7, #4]
- 8001418:	f103 020e 	add.w	r2, r3, #14
- 800141c:	f04f 33ff 	mov.w	r3, #4294967295	@ 0xffffffff
- 8001420:	9300      	str	r3, [sp, #0]
- 8001422:	2304      	movs	r3, #4
- 8001424:	f003 fac7 	bl	80049b6 <HAL_SPI_TransmitReceive>
+ 800140e:	f103 010a 	add.w	r1, r3, #10
+ 8001412:	687b      	ldr	r3, [r7, #4]
+ 8001414:	f103 020e 	add.w	r2, r3, #14
+ 8001418:	f04f 33ff 	mov.w	r3, #4294967295	@ 0xffffffff
+ 800141c:	9300      	str	r3, [sp, #0]
+ 800141e:	2304      	movs	r3, #4
+ 8001420:	f003 fac9 	bl	80049b6 <HAL_SPI_TransmitReceive>
 	HAL_GPIO_WritePin(mcp->CS_PORT, mcp->CS_PIN, GPIO_PIN_SET);
+ 8001424:	687b      	ldr	r3, [r7, #4]
+ 8001426:	6858      	ldr	r0, [r3, #4]
  8001428:	687b      	ldr	r3, [r7, #4]
- 800142a:	6858      	ldr	r0, [r3, #4]
- 800142c:	687b      	ldr	r3, [r7, #4]
- 800142e:	891b      	ldrh	r3, [r3, #8]
- 8001430:	2201      	movs	r2, #1
- 8001432:	4619      	mov	r1, r3
- 8001434:	f002 f8b8 	bl	80035a8 <HAL_GPIO_WritePin>
+ 800142a:	891b      	ldrh	r3, [r3, #8]
+ 800142c:	2201      	movs	r2, #1
+ 800142e:	4619      	mov	r1, r3
+ 8001430:	f002 f8ba 	bl	80035a8 <HAL_GPIO_WritePin>
 
 	uint16_t value = ((uint16_t)mcp->rxData[1] << 8) | mcp->rxData[2];
- 8001438:	687b      	ldr	r3, [r7, #4]
- 800143a:	7bdb      	ldrb	r3, [r3, #15]
- 800143c:	b21b      	sxth	r3, r3
- 800143e:	021b      	lsls	r3, r3, #8
- 8001440:	b21a      	sxth	r2, r3
- 8001442:	687b      	ldr	r3, [r7, #4]
- 8001444:	7c1b      	ldrb	r3, [r3, #16]
+ 8001434:	687b      	ldr	r3, [r7, #4]
+ 8001436:	7bdb      	ldrb	r3, [r3, #15]
+ 8001438:	b21b      	sxth	r3, r3
+ 800143a:	021b      	lsls	r3, r3, #8
+ 800143c:	b21a      	sxth	r2, r3
+ 800143e:	687b      	ldr	r3, [r7, #4]
+ 8001440:	7c1b      	ldrb	r3, [r3, #16]
+ 8001442:	b21b      	sxth	r3, r3
+ 8001444:	4313      	orrs	r3, r2
  8001446:	b21b      	sxth	r3, r3
- 8001448:	4313      	orrs	r3, r2
- 800144a:	b21b      	sxth	r3, r3
- 800144c:	81fb      	strh	r3, [r7, #14]
+ 8001448:	81fb      	strh	r3, [r7, #14]
 	mcp->rawADC = (value >> 3); // Use RSHIFT-3!!!
- 800144e:	89fb      	ldrh	r3, [r7, #14]
- 8001450:	08db      	lsrs	r3, r3, #3
- 8001452:	b29a      	uxth	r2, r3
- 8001454:	687b      	ldr	r3, [r7, #4]
- 8001456:	825a      	strh	r2, [r3, #18]
+ 800144a:	89fb      	ldrh	r3, [r7, #14]
+ 800144c:	08db      	lsrs	r3, r3, #3
+ 800144e:	b29a      	uxth	r2, r3
+ 8001450:	687b      	ldr	r3, [r7, #4]
+ 8001452:	825a      	strh	r2, [r3, #18]
 }
- 8001458:	bf00      	nop
- 800145a:	3710      	adds	r7, #16
- 800145c:	46bd      	mov	sp, r7
- 800145e:	bd80      	pop	{r7, pc}
+ 8001454:	bf00      	nop
+ 8001456:	3710      	adds	r7, #16
+ 8001458:	46bd      	mov	sp, r7
+ 800145a:	bd80      	pop	{r7, pc}
 
-08001460 <computeCH0>:
+0800145c <computeCH0>:
 
 void computeCH0(MCP3204* mcp) {
- 8001460:	b580      	push	{r7, lr}
- 8001462:	b082      	sub	sp, #8
- 8001464:	af00      	add	r7, sp, #0
- 8001466:	6078      	str	r0, [r7, #4]
+ 800145c:	b580      	push	{r7, lr}
+ 800145e:	b082      	sub	sp, #8
+ 8001460:	af00      	add	r7, sp, #0
+ 8001462:	6078      	str	r0, [r7, #4]
 	enableCH0(mcp);
- 8001468:	6878      	ldr	r0, [r7, #4]
- 800146a:	f000 f889 	bl	8001580 <enableCH0>
+ 8001464:	6878      	ldr	r0, [r7, #4]
+ 8001466:	f000 f88b 	bl	8001580 <enableCH0>
 	getADCValue(mcp);
- 800146e:	6878      	ldr	r0, [r7, #4]
- 8001470:	f7ff ffaf 	bl	80013d2 <getADCValue>
+ 800146a:	6878      	ldr	r0, [r7, #4]
+ 800146c:	f7ff ffaf 	bl	80013ce <getADCValue>
 	mcp->CH0_Voltage = computeVoltage(mcp->rawADC);
- 8001474:	687b      	ldr	r3, [r7, #4]
- 8001476:	8a5b      	ldrh	r3, [r3, #18]
- 8001478:	4618      	mov	r0, r3
- 800147a:	f000 f851 	bl	8001520 <computeVoltage>
- 800147e:	eef0 7a40 	vmov.f32	s15, s0
- 8001482:	687b      	ldr	r3, [r7, #4]
- 8001484:	edc3 7a05 	vstr	s15, [r3, #20]
+ 8001470:	687b      	ldr	r3, [r7, #4]
+ 8001472:	8a5b      	ldrh	r3, [r3, #18]
+ 8001474:	4618      	mov	r0, r3
+ 8001476:	f000 f853 	bl	8001520 <computeVoltage>
+ 800147a:	eef0 7a40 	vmov.f32	s15, s0
+ 800147e:	687b      	ldr	r3, [r7, #4]
+ 8001480:	edc3 7a05 	vstr	s15, [r3, #20]
 }
- 8001488:	bf00      	nop
- 800148a:	3708      	adds	r7, #8
- 800148c:	46bd      	mov	sp, r7
- 800148e:	bd80      	pop	{r7, pc}
+ 8001484:	bf00      	nop
+ 8001486:	3708      	adds	r7, #8
+ 8001488:	46bd      	mov	sp, r7
+ 800148a:	bd80      	pop	{r7, pc}
 
-08001490 <computeCH1>:
+0800148c <computeCH1>:
 
 void computeCH1(MCP3204* mcp) {
- 8001490:	b580      	push	{r7, lr}
- 8001492:	b082      	sub	sp, #8
- 8001494:	af00      	add	r7, sp, #0
- 8001496:	6078      	str	r0, [r7, #4]
+ 800148c:	b580      	push	{r7, lr}
+ 800148e:	b082      	sub	sp, #8
+ 8001490:	af00      	add	r7, sp, #0
+ 8001492:	6078      	str	r0, [r7, #4]
 	enableCH1(mcp);
- 8001498:	6878      	ldr	r0, [r7, #4]
- 800149a:	f000 f883 	bl	80015a4 <enableCH1>
+ 8001494:	6878      	ldr	r0, [r7, #4]
+ 8001496:	f000 f885 	bl	80015a4 <enableCH1>
 	getADCValue(mcp);
- 800149e:	6878      	ldr	r0, [r7, #4]
- 80014a0:	f7ff ff97 	bl	80013d2 <getADCValue>
+ 800149a:	6878      	ldr	r0, [r7, #4]
+ 800149c:	f7ff ff97 	bl	80013ce <getADCValue>
 	mcp->CH1_Voltage = computeVoltage(mcp->rawADC);
- 80014a4:	687b      	ldr	r3, [r7, #4]
- 80014a6:	8a5b      	ldrh	r3, [r3, #18]
- 80014a8:	4618      	mov	r0, r3
- 80014aa:	f000 f839 	bl	8001520 <computeVoltage>
- 80014ae:	eef0 7a40 	vmov.f32	s15, s0
- 80014b2:	687b      	ldr	r3, [r7, #4]
- 80014b4:	edc3 7a06 	vstr	s15, [r3, #24]
+ 80014a0:	687b      	ldr	r3, [r7, #4]
+ 80014a2:	8a5b      	ldrh	r3, [r3, #18]
+ 80014a4:	4618      	mov	r0, r3
+ 80014a6:	f000 f83b 	bl	8001520 <computeVoltage>
+ 80014aa:	eef0 7a40 	vmov.f32	s15, s0
+ 80014ae:	687b      	ldr	r3, [r7, #4]
+ 80014b0:	edc3 7a06 	vstr	s15, [r3, #24]
 }
- 80014b8:	bf00      	nop
- 80014ba:	3708      	adds	r7, #8
- 80014bc:	46bd      	mov	sp, r7
- 80014be:	bd80      	pop	{r7, pc}
+ 80014b4:	bf00      	nop
+ 80014b6:	3708      	adds	r7, #8
+ 80014b8:	46bd      	mov	sp, r7
+ 80014ba:	bd80      	pop	{r7, pc}
 
-080014c0 <computeCH2>:
+080014bc <computeCH2>:
 
 void computeCH2(MCP3204* mcp) {
- 80014c0:	b580      	push	{r7, lr}
- 80014c2:	b082      	sub	sp, #8
- 80014c4:	af00      	add	r7, sp, #0
- 80014c6:	6078      	str	r0, [r7, #4]
+ 80014bc:	b580      	push	{r7, lr}
+ 80014be:	b082      	sub	sp, #8
+ 80014c0:	af00      	add	r7, sp, #0
+ 80014c2:	6078      	str	r0, [r7, #4]
 	enableCH2(mcp);
- 80014c8:	6878      	ldr	r0, [r7, #4]
- 80014ca:	f000 f87d 	bl	80015c8 <enableCH2>
+ 80014c4:	6878      	ldr	r0, [r7, #4]
+ 80014c6:	f000 f87f 	bl	80015c8 <enableCH2>
 	getADCValue(mcp);
- 80014ce:	6878      	ldr	r0, [r7, #4]
- 80014d0:	f7ff ff7f 	bl	80013d2 <getADCValue>
+ 80014ca:	6878      	ldr	r0, [r7, #4]
+ 80014cc:	f7ff ff7f 	bl	80013ce <getADCValue>
 	mcp->CH2_Voltage = computeVoltage(mcp->rawADC);
- 80014d4:	687b      	ldr	r3, [r7, #4]
- 80014d6:	8a5b      	ldrh	r3, [r3, #18]
- 80014d8:	4618      	mov	r0, r3
- 80014da:	f000 f821 	bl	8001520 <computeVoltage>
- 80014de:	eef0 7a40 	vmov.f32	s15, s0
- 80014e2:	687b      	ldr	r3, [r7, #4]
- 80014e4:	edc3 7a07 	vstr	s15, [r3, #28]
+ 80014d0:	687b      	ldr	r3, [r7, #4]
+ 80014d2:	8a5b      	ldrh	r3, [r3, #18]
+ 80014d4:	4618      	mov	r0, r3
+ 80014d6:	f000 f823 	bl	8001520 <computeVoltage>
+ 80014da:	eef0 7a40 	vmov.f32	s15, s0
+ 80014de:	687b      	ldr	r3, [r7, #4]
+ 80014e0:	edc3 7a07 	vstr	s15, [r3, #28]
 }
- 80014e8:	bf00      	nop
- 80014ea:	3708      	adds	r7, #8
- 80014ec:	46bd      	mov	sp, r7
- 80014ee:	bd80      	pop	{r7, pc}
+ 80014e4:	bf00      	nop
+ 80014e6:	3708      	adds	r7, #8
+ 80014e8:	46bd      	mov	sp, r7
+ 80014ea:	bd80      	pop	{r7, pc}
 
-080014f0 <computeCH3>:
+080014ec <computeCH3>:
 
 void computeCH3(MCP3204* mcp) {
- 80014f0:	b580      	push	{r7, lr}
- 80014f2:	b082      	sub	sp, #8
- 80014f4:	af00      	add	r7, sp, #0
- 80014f6:	6078      	str	r0, [r7, #4]
+ 80014ec:	b580      	push	{r7, lr}
+ 80014ee:	b082      	sub	sp, #8
+ 80014f0:	af00      	add	r7, sp, #0
+ 80014f2:	6078      	str	r0, [r7, #4]
 	enableCH3(mcp);
- 80014f8:	6878      	ldr	r0, [r7, #4]
- 80014fa:	f000 f877 	bl	80015ec <enableCH3>
+ 80014f4:	6878      	ldr	r0, [r7, #4]
+ 80014f6:	f000 f879 	bl	80015ec <enableCH3>
 	getADCValue(mcp);
- 80014fe:	6878      	ldr	r0, [r7, #4]
- 8001500:	f7ff ff67 	bl	80013d2 <getADCValue>
+ 80014fa:	6878      	ldr	r0, [r7, #4]
+ 80014fc:	f7ff ff67 	bl	80013ce <getADCValue>
 	mcp->CH3_Voltage = computeVoltage(mcp->rawADC);
- 8001504:	687b      	ldr	r3, [r7, #4]
- 8001506:	8a5b      	ldrh	r3, [r3, #18]
- 8001508:	4618      	mov	r0, r3
- 800150a:	f000 f809 	bl	8001520 <computeVoltage>
- 800150e:	eef0 7a40 	vmov.f32	s15, s0
- 8001512:	687b      	ldr	r3, [r7, #4]
- 8001514:	edc3 7a08 	vstr	s15, [r3, #32]
+ 8001500:	687b      	ldr	r3, [r7, #4]
+ 8001502:	8a5b      	ldrh	r3, [r3, #18]
+ 8001504:	4618      	mov	r0, r3
+ 8001506:	f000 f80b 	bl	8001520 <computeVoltage>
+ 800150a:	eef0 7a40 	vmov.f32	s15, s0
+ 800150e:	687b      	ldr	r3, [r7, #4]
+ 8001510:	edc3 7a08 	vstr	s15, [r3, #32]
 }
- 8001518:	bf00      	nop
- 800151a:	3708      	adds	r7, #8
- 800151c:	46bd      	mov	sp, r7
- 800151e:	bd80      	pop	{r7, pc}
+ 8001514:	bf00      	nop
+ 8001516:	3708      	adds	r7, #8
+ 8001518:	46bd      	mov	sp, r7
+ 800151a:	bd80      	pop	{r7, pc}
+ 800151c:	0000      	movs	r0, r0
+	...
 
 08001520 <computeVoltage>:
 
@@ -2610,7 +2611,7 @@ void MX_SPI3_Init(void)
  8001678:	d001      	beq.n	800167e <MX_SPI3_Init+0x6e>
   {
     Error_Handler();
- 800167a:	f7ff fe71 	bl	8001360 <Error_Handler>
+ 800167a:	f7ff fe6f 	bl	800135c <Error_Handler>
   }
   /* USER CODE BEGIN SPI3_Init 2 */
 
