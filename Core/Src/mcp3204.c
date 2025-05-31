@@ -37,7 +37,7 @@ void getADCValue(MCP3204* mcp) {
 	HAL_GPIO_WritePin(mcp->CS_PORT, mcp->CS_PIN, GPIO_PIN_SET);
 
 	uint16_t value = ((uint16_t)mcp->rxData[1] << 8) | mcp->rxData[2];
-	mcp->rawADC = (value >> 3); // Use RSHIFT-3
+	mcp->rawADC = (value >> 3); // Use RSHIFT-3!!!
 }
 
 void computeCH0(MCP3204* mcp) {
