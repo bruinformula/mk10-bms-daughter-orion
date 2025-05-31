@@ -84,11 +84,11 @@ void computeSTM_ADC_Voltages() {
 }
 
 float voltageToTemp(float V) {
-	if (V > voltage_table[0] || V < voltage_table[TABLE_SIZE - 1]) {
+	if (V > voltage_table[0] || V < voltage_table[32]) {
 		return 999.0; // Out of range
 	}
 
-	for (size_t i = 0; i < TABLE_SIZE - 1; i++) {
+	for (size_t i = 0; i < 32; i++) {
 		float v_high = voltage_table[i];      // higher voltage, lower temp
 		float v_low = voltage_table[i + 1];   // lower voltage, higher temp
 
@@ -103,4 +103,28 @@ float voltageToTemp(float V) {
 	}
 
 	return 999.0; // Should not reach here
+}
+
+void getLowestTemp() {
+	float min = FLT_MAX;
+	for (size_t i = 0; i < 20; i++) {
+		if (temp_conversions[i] < min) min = temp_conversions[i];
+	}
+	lowestTemp = min;
+}
+
+void getHighestTemp() {
+	float max = -FLT_MAX;
+	for (size_t i = 0; i < 20; i++) {
+		if (temp_conversions[i] > max) max = temp_conversions[i];
+	}
+	highestTemp = max;
+}
+
+void getAverageTemp() {
+	float sum = 0;
+	for (size_t i = 0; i < 20; i++) {
+		sum+=temp_conversions[i];
+	}
+	averageTemp = (sum/20);
 }

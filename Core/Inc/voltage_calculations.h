@@ -10,6 +10,7 @@
 
 #include "adc.h"
 #include "mcp3204.h"
+#include "float.h"
 
 // External MCP3204 ADCs
 #define CS1_PORT GPIOC
@@ -32,7 +33,6 @@ extern float voltageBuffer[8];
 void computeSTM_ADC_Voltages();
 
 // ALL TEMP COMPUTATIONS
-#define TABLE_SIZE 33
 extern const float voltage_table[33];
 extern const float temp_table[33];
 extern float temp_conversions[20];
@@ -43,5 +43,8 @@ float voltageToTemp(float V);
 extern float highestTemp;
 extern float lowestTemp;
 extern float averageTemp;
+void getLowestTemp();
+void getHighestTemp();
+void getAverageTemp();
 
 #endif /* INC_VOLTAGE_CALCULATIONS_H_ */

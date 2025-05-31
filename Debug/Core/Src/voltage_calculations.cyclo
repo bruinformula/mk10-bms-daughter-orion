@@ -2,3 +2,6 @@
 ../Core/Src/voltage_calculations.c:53:6:computeAllTemps	1
 ../Core/Src/voltage_calculations.c:80:6:computeSTM_ADC_Voltages	2
 ../Core/Src/voltage_calculations.c:86:7:voltageToTemp	6
+../Core/Src/voltage_calculations.c:108:6:getLowestTemp	3
+../Core/Src/voltage_calculations.c:116:6:getHighestTemp	3
+../Core/Src/voltage_calculations.c:124:6:getAverageTemp	2
