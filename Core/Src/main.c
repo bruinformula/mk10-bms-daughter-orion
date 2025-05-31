@@ -47,8 +47,8 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-
-
+DAUGHTER_CAN_CONTEXT CAN_CONTEXT;
+uint32_t penis = 1;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -107,14 +107,18 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  computeAllVoltages();
-	  computeAllTemps();
 
-	  getLowestTemp();
-	  getHighestTemp();
-	  getAverageTemp();
+//	  computeAllVoltages();
+//	  computeAllTemps();
+//
+//	  getLowestTemp();
+//	  getHighestTemp();
+//	  getAverageTemp();
 
-	  HAL_Delay(50);
+	  formAddressDataframe(&penis, &(CAN_CONTEXT.address_broadcast_dataframe));
+	  formThermistorDataframe(&penis, &(CAN_CONTEXT.thermistor_broadcast_dataframe));
+
+	  HAL_Delay(200);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

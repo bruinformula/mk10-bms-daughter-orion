@@ -8,9 +8,6 @@
 #ifndef INC_DATAFRAMES_H_
 #define INC_DATAFRAMES_H_
 
-#define MODULE_NUMBER 1
-#define NUM_THERMISTORS 20
-
 typedef union J1939_ADDRESS_BROADCAST_DF {
 	struct {
 		uint8_t j1931_address_b1;
@@ -32,11 +29,19 @@ typedef union THERMISTOR_BMS_BROADCAST_DF {
 		uint8_t highest_temp_value;
 		uint8_t average_temp_value;
 		uint8_t num_thermistors;
-		uint8_t lowest_thermistor_id;
 		uint8_t highest_thermistor_id;
+		uint8_t lowest_thermistor_id;
 		uint8_t checksum;
 	} data;
 	uint8_t array[8];
 } THERMISTOR_BMS_BROADCAST_DF;
+
+typedef struct DAUGHTER_CAN_CONTEXT {
+	uint32_t ms_since_j1939_broadcast;
+	J1939_ADDRESS_BROADCAST_DF address_broadcast_dataframe;
+
+	uint32_t ms_since_thermistor_broadcast;
+	THERMISTOR_BMS_BROADCAST_DF thermistor_broadcast_dataframe;
+} DAUGHTER_CAN_CONTEXT;
 
 #endif /* INC_DATAFRAMES_H_ */

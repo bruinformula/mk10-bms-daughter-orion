@@ -30,6 +30,7 @@ float highestTemp;
 float lowestTemp;
 float averageTemp;
 
+// ALL VOLTAGE CALCULATIONS!!!!!!
 void computeAllVoltages() {
 	  HAL_ADC_Start_DMA(&hadc1, (uint32_t*) rawADCBuffer, 8);
 	  computeSTM_ADC_Voltages();
@@ -128,3 +129,45 @@ void getAverageTemp() {
 	}
 	averageTemp = (sum/20);
 }
+
+// CAN DATAFRAME IMPLEMENTATIONS
+void formAddressDataframe(uint32_t* lastReadMS,  J1939_ADDRESS_BROADCAST_DF* dataframe) {
+	dataframe->data.j1931_address_b1 = 0xF3;
+	dataframe->data.j1931_address_b2 = 0x00;
+	dataframe->data.j1931_address_b3 = 0x80;
+	dataframe->data.bms_address = 0xF3;
+	dataframe->data.thermistor_module_number_shifted = (MODULE_NUMBER << 3);
+	dataframe->data.c1 = 0x40;
+	dataframe->data.c2 = 0x1E;
+	dataframe->data.c3 = 0x90;
+}
+
+void formThermistorDataframe(uint32_t* lastReadMS,  THERMISTOR_BMS_BROADCAST_DF* dataframe) {
+	// Do all the necessary calculations
+	computeAllVoltages();
+	computeAllTemps();
+
+	getLowestTemp();
+	getHighestTemp();
+	getAverageTemp();
+
+	uint8_t checksum = 0;
+
+	// Now prep the dataframe!
+	dataframe->data.thermistor_module_number = MODULE_NUMBER;
+	dataframe->data.lowest_temp_value = (uint8_t)lowestTemp;
+	dataframe->data.highest_temp_value = (uint8_t)highestTemp;
+	dataframe->data.average_temp_value = (uint8_t)averageTemp;
+	dataframe->data.num_thermistors = NUM_THERMISTORS;
+	dataframe->data.highest_thermistor_id = THERMISTOR_HIGHEST_INDEX;
+	dataframe->data.lowest_thermistor_id = THERMISTOR_LOWEST_INDEX;
+
+	for (size_t i = 0; i < 7; i++) {
+		checksum+=dataframe->array[i];
+	}
+	checksum+=0x39;
+	checksum+=8;
+
+	dataframe->data.checksum = checksum;
+}
+

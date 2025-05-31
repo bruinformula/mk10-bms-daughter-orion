@@ -9,8 +9,9 @@
 #define INC_VOLTAGE_CALCULATIONS_H_
 
 #include "adc.h"
-#include "mcp3204.h"
 #include "float.h"
+#include "mcp3204.h"
+#include "dataframes.h"
 
 // External MCP3204 ADCs
 #define CS1_PORT GPIOC
@@ -32,7 +33,7 @@ extern uint16_t rawADCBuffer[8];
 extern float voltageBuffer[8];
 void computeSTM_ADC_Voltages();
 
-// ALL TEMP COMPUTATIONS
+// ALL TEMP COMPUTATIONS!!!!
 extern const float voltage_table[33];
 extern const float temp_table[33];
 extern float temp_conversions[20];
@@ -46,5 +47,13 @@ extern float averageTemp;
 void getLowestTemp();
 void getHighestTemp();
 void getAverageTemp();
+
+// Preparing the CAN Dataframes
+#define MODULE_NUMBER 1
+#define NUM_THERMISTORS 20
+#define THERMISTOR_LOWEST_INDEX ((MODULE_NUMBER - 1)*128)
+#define THERMISTOR_HIGHEST_INDEX (THERMISTOR_LOWEST_INDEX + NUM_THERMISTORS-1)
+void formAddressDataframe(uint32_t* lastReadMS,  J1939_ADDRESS_BROADCAST_DF* dataframe);
+void formThermistorDataframe(uint32_t* lastReadMS,  THERMISTOR_BMS_BROADCAST_DF* dataframe);
 
 #endif /* INC_VOLTAGE_CALCULATIONS_H_ */
