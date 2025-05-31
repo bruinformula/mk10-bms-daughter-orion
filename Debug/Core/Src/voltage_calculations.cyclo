@@ -1,0 +1,4 @@
+../Core/Src/voltage_calculations.c:33:6:computeAllVoltages	1
+../Core/Src/voltage_calculations.c:53:6:computeAllTemps	1
+../Core/Src/voltage_calculations.c:80:6:computeSTM_ADC_Voltages	2
+../Core/Src/voltage_calculations.c:86:7:voltageToTemp	6
