@@ -6,4 +6,4 @@
 ../Core/Src/voltage_calculations.c:117:6:getHighestTemp	16	static
 ../Core/Src/voltage_calculations.c:125:6:getAverageTemp	16	static
 ../Core/Src/voltage_calculations.c:134:6:formAddressDataframe	16	static
-../Core/Src/voltage_calculations.c:145:6:formThermistorDataframe	32	static
+../Core/Src/voltage_calculations.c:145:6:formThermistorDataframe	24	static

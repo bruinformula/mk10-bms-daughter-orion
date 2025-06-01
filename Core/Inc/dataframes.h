@@ -8,6 +8,10 @@
 #ifndef INC_DATAFRAMES_H_
 #define INC_DATAFRAMES_H_
 
+#include "can.h"
+
+#define J1939_ADDRESS_BROADCAST_ID 0x18EEFF80
+
 typedef union J1939_ADDRESS_BROADCAST_DF {
 	struct {
 		uint8_t j1931_address_b1;
@@ -21,6 +25,8 @@ typedef union J1939_ADDRESS_BROADCAST_DF {
 	} data;
 	uint8_t array[8];
 } J1939_ADDRESS_BROADCAST_DF;
+
+#define THERMISTOR_BMS_BROADCAST_ID 0x1839F380
 
 typedef union THERMISTOR_BMS_BROADCAST_DF {
 	struct {
@@ -37,11 +43,11 @@ typedef union THERMISTOR_BMS_BROADCAST_DF {
 } THERMISTOR_BMS_BROADCAST_DF;
 
 typedef struct DAUGHTER_CAN_CONTEXT {
-	uint32_t ms_since_j1939_broadcast;
 	J1939_ADDRESS_BROADCAST_DF address_broadcast_dataframe;
+	CAN_TxHeaderTypeDef ADDRESS_CTXHeader;
 
-	uint32_t ms_since_thermistor_broadcast;
 	THERMISTOR_BMS_BROADCAST_DF thermistor_broadcast_dataframe;
+	CAN_TxHeaderTypeDef THERMISTOR_CTXHeader;
 } DAUGHTER_CAN_CONTEXT;
 
 #endif /* INC_DATAFRAMES_H_ */

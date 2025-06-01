@@ -131,7 +131,7 @@ void getAverageTemp() {
 }
 
 // CAN DATAFRAME IMPLEMENTATIONS
-void formAddressDataframe(uint32_t* lastReadMS,  J1939_ADDRESS_BROADCAST_DF* dataframe) {
+void formAddressDataframe(J1939_ADDRESS_BROADCAST_DF* dataframe) {
 	dataframe->data.j1931_address_b1 = 0xF3;
 	dataframe->data.j1931_address_b2 = 0x00;
 	dataframe->data.j1931_address_b3 = 0x80;
@@ -142,7 +142,7 @@ void formAddressDataframe(uint32_t* lastReadMS,  J1939_ADDRESS_BROADCAST_DF* dat
 	dataframe->data.c3 = 0x90;
 }
 
-void formThermistorDataframe(uint32_t* lastReadMS,  THERMISTOR_BMS_BROADCAST_DF* dataframe) {
+void formThermistorDataframe(THERMISTOR_BMS_BROADCAST_DF* dataframe) {
 	// Do all the necessary calculations
 	computeAllVoltages();
 	computeAllTemps();
@@ -153,7 +153,7 @@ void formThermistorDataframe(uint32_t* lastReadMS,  THERMISTOR_BMS_BROADCAST_DF*
 
 	uint8_t checksum = 0;
 
-	// Now prep the dataframe!
+	// Now prepare the dataframe!
 	dataframe->data.thermistor_module_number = MODULE_NUMBER;
 	dataframe->data.lowest_temp_value = (uint8_t)lowestTemp;
 	dataframe->data.highest_temp_value = (uint8_t)highestTemp;

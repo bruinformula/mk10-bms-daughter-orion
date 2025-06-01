@@ -48,7 +48,9 @@
 
 /* USER CODE BEGIN PV */
 DAUGHTER_CAN_CONTEXT CAN_CONTEXT;
-uint32_t penis = 1;
+HAL_StatusTypeDef ADDRESS_CAN_TxStatus;
+HAL_StatusTypeDef THERMISTOR_CAN_TxStatus;
+uint32_t mailbox;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -97,28 +99,36 @@ int main(void)
   MX_CAN1_Init();
   /* USER CODE BEGIN 2 */
 
+  HAL_CAN_Start(&hcan1);
+
   initMCP(&MCP1, &hspi3, CS1_PORT, CS1_PIN);
   initMCP(&MCP2, &hspi3, CS2_PORT, CS2_PIN);
   initMCP(&MCP3, &hspi3, CS3_PORT, CS3_PIN);
 
+  CAN_CONTEXT.ADDRESS_CTXHeader.StdId = J1939_ADDRESS_BROADCAST_ID;
+  formAddressDataframe(&(CAN_CONTEXT.address_broadcast_dataframe));
+
+  CAN_CONTEXT.THERMISTOR_CTXHeader.StdId = THERMISTOR_BMS_BROADCAST_ID;
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  // This dataframe is constant, so need to reform it, sent every 200 ms
+	  ADDRESS_CAN_TxStatus = HAL_CAN_AddTxMessage(&hcan1,
+			  &CAN_CONTEXT.ADDRESS_CTXHeader, CAN_CONTEXT.address_broadcast_dataframe.array, &mailbox);
 
-//	  computeAllVoltages();
-//	  computeAllTemps();
-//
-//	  getLowestTemp();
-//	  getHighestTemp();
-//	  getAverageTemp();
+	  // Meanwhile, thermistor dataframe is sent every 100ms, needs to be recomputed
+	  formThermistorDataframe(&(CAN_CONTEXT.thermistor_broadcast_dataframe));
+	  THERMISTOR_CAN_TxStatus = HAL_CAN_AddTxMessage(&hcan1, &CAN_CONTEXT.THERMISTOR_CTXHeader,
+			  CAN_CONTEXT.thermistor_broadcast_dataframe.array, &mailbox);
+	  HAL_Delay(100);
 
-	  formAddressDataframe(&penis, &(CAN_CONTEXT.address_broadcast_dataframe));
-	  formThermistorDataframe(&penis, &(CAN_CONTEXT.thermistor_broadcast_dataframe));
-
-	  HAL_Delay(200);
+	  formThermistorDataframe(&(CAN_CONTEXT.thermistor_broadcast_dataframe));
+	  THERMISTOR_CAN_TxStatus = HAL_CAN_AddTxMessage(&hcan1, &CAN_CONTEXT.THERMISTOR_CTXHeader,
+			  CAN_CONTEXT.thermistor_broadcast_dataframe.array, &mailbox);
+	  HAL_Delay(100);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

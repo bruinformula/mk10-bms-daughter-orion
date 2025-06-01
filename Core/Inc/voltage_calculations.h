@@ -53,7 +53,7 @@ void getAverageTemp();
 #define NUM_THERMISTORS 20
 #define THERMISTOR_LOWEST_INDEX ((MODULE_NUMBER - 1)*128)
 #define THERMISTOR_HIGHEST_INDEX (THERMISTOR_LOWEST_INDEX + NUM_THERMISTORS-1)
-void formAddressDataframe(uint32_t* lastReadMS,  J1939_ADDRESS_BROADCAST_DF* dataframe);
-void formThermistorDataframe(uint32_t* lastReadMS,  THERMISTOR_BMS_BROADCAST_DF* dataframe);
+void formAddressDataframe(J1939_ADDRESS_BROADCAST_DF* dataframe);
+void formThermistorDataframe(THERMISTOR_BMS_BROADCAST_DF* dataframe);
 
 #endif /* INC_VOLTAGE_CALCULATIONS_H_ */
