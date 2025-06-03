@@ -143,7 +143,8 @@ void formAddressDataframe(J1939_ADDRESS_BROADCAST_DF* dataframe) {
 	dataframe->data.j1931_address_b2 = 0x00;
 	dataframe->data.j1931_address_b3 = 0x80;
 	dataframe->data.bms_address = 0xF3;
-	dataframe->data.thermistor_module_number_shifted = (MODULE_NUMBER << 3);
+//	dataframe->data.thermistor_module_number_shifted = (MODULE_NUMBER << 3);
+	dataframe->data.thermistor_module_number_shifted = ((MODULE_NUMBER-1) << 3);
 	dataframe->data.c1 = 0x40;
 	dataframe->data.c2 = 0x1E;
 	dataframe->data.c3 = 0x90;
@@ -161,7 +162,8 @@ void formThermistorDataframe(THERMISTOR_BMS_BROADCAST_DF* dataframe) {
 	uint8_t checksum = 0;
 
 	// Now prepare the dataframe!
-	dataframe->data.thermistor_module_number = MODULE_NUMBER;
+//	dataframe->data.thermistor_module_number = MODULE_NUMBER;
+	dataframe->data.thermistor_module_number = (MODULE_NUMBER-1);
 	dataframe->data.lowest_temp_value = (int8_t)lowestTemp;
 	dataframe->data.highest_temp_value = (int8_t)highestTemp;
 	dataframe->data.average_temp_value = (int8_t)averageTemp;
