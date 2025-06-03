@@ -111,7 +111,7 @@ int main(void)
   CAN_CONTEXT.ADDRESS_CTXHeader.DLC = 8;
   formAddressDataframe(&(CAN_CONTEXT.address_broadcast_dataframe));
 
-  CAN_CONTEXT.THERMISTOR_CTXHeader.ExtId = THERMISTOR_BMS_BROADCAST_ID;
+  CAN_CONTEXT.THERMISTOR_CTXHeader.ExtId = THERMISTOR_BMS_DEFAULT_BROADCAST_ID + (MODULE_NUMBER-1);
   CAN_CONTEXT.THERMISTOR_CTXHeader.IDE = CAN_ID_EXT;
   CAN_CONTEXT.THERMISTOR_CTXHeader.RTR = CAN_RTR_DATA;
   CAN_CONTEXT.THERMISTOR_CTXHeader.DLC = 8;
@@ -122,8 +122,8 @@ int main(void)
   while (1)
   {
 	  // This dataframe is constant, so need to reform it, sent every 200 ms
-//	  ADDRESS_CAN_TxStatus = HAL_CAN_AddTxMessage(&hcan1,
-//			  &CAN_CONTEXT.ADDRESS_CTXHeader, CAN_CONTEXT.address_broadcast_dataframe.array, &mailbox);
+	  ADDRESS_CAN_TxStatus = HAL_CAN_AddTxMessage(&hcan1,
+			  &CAN_CONTEXT.ADDRESS_CTXHeader, CAN_CONTEXT.address_broadcast_dataframe.array, &mailbox);
 
 	  // Meanwhile, thermistor dataframe is sent every 100ms, needs to be recomputed
 	  formThermistorDataframe(&(CAN_CONTEXT.thermistor_broadcast_dataframe));
@@ -164,7 +164,7 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_MSI;
   RCC_OscInitStruct.MSIState = RCC_MSI_ON;
   RCC_OscInitStruct.MSICalibrationValue = 0;
-  RCC_OscInitStruct.MSIClockRange = RCC_MSIRANGE_6;
+  RCC_OscInitStruct.MSIClockRange = RCC_MSIRANGE_7;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_NONE;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {

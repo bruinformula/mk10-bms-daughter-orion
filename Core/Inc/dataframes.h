@@ -26,14 +26,14 @@ typedef union J1939_ADDRESS_BROADCAST_DF {
 	uint8_t array[8];
 } J1939_ADDRESS_BROADCAST_DF;
 
-#define THERMISTOR_BMS_BROADCAST_ID 0x1839F380
+#define THERMISTOR_BMS_DEFAULT_BROADCAST_ID 0x1839F380
 
 typedef union THERMISTOR_BMS_BROADCAST_DF {
 	struct {
 		uint8_t thermistor_module_number;
-		uint8_t lowest_temp_value;
-		uint8_t highest_temp_value;
-		uint8_t average_temp_value;
+		int8_t lowest_temp_value;
+		int8_t highest_temp_value;
+		int8_t average_temp_value;
 		uint8_t num_thermistors;
 		uint8_t highest_thermistor_id;
 		uint8_t lowest_thermistor_id;

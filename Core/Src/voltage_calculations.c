@@ -30,7 +30,7 @@ float highestTemp;
 float lowestTemp;
 float averageTemp;
 
-int numValidTemps = 0;
+int numValidTemps;
 
 // ALL VOLTAGE CALCULATIONS!!!!!!
 void computeAllVoltages() {
@@ -162,9 +162,9 @@ void formThermistorDataframe(THERMISTOR_BMS_BROADCAST_DF* dataframe) {
 
 	// Now prepare the dataframe!
 	dataframe->data.thermistor_module_number = MODULE_NUMBER;
-	dataframe->data.lowest_temp_value = (uint8_t)lowestTemp;
-	dataframe->data.highest_temp_value = (uint8_t)highestTemp;
-	dataframe->data.average_temp_value = (uint8_t)averageTemp;
+	dataframe->data.lowest_temp_value = (int8_t)lowestTemp;
+	dataframe->data.highest_temp_value = (int8_t)highestTemp;
+	dataframe->data.average_temp_value = (int8_t)averageTemp;
 	dataframe->data.num_thermistors = NUM_THERMISTORS;
 	dataframe->data.highest_thermistor_id = THERMISTOR_HIGHEST_INDEX;
 	dataframe->data.lowest_thermistor_id = THERMISTOR_LOWEST_INDEX;
