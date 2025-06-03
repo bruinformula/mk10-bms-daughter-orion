@@ -3415,11 +3415,11 @@ void formThermistorDataframe(THERMISTOR_BMS_BROADCAST_DF* dataframe) {
  8001b18:	711a      	strb	r2, [r3, #4]
 	dataframe->data.highest_thermistor_id = THERMISTOR_HIGHEST_INDEX;
  8001b1a:	687b      	ldr	r3, [r7, #4]
- 8001b1c:	2200      	movs	r2, #0
+ 8001b1c:	2213      	movs	r2, #19
  8001b1e:	715a      	strb	r2, [r3, #5]
 	dataframe->data.lowest_thermistor_id = THERMISTOR_LOWEST_INDEX;
  8001b20:	687b      	ldr	r3, [r7, #4]
- 8001b22:	2213      	movs	r2, #19
+ 8001b22:	2200      	movs	r2, #0
  8001b24:	719a      	strb	r2, [r3, #6]
 
 	for (size_t i = 0; i < 7; i++) {
