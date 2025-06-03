@@ -28,7 +28,7 @@ extern MCP3204 MCP2;
 extern MCP3204 MCP3;
 
 // For the onboard STM32 ADCs
-#define ADC_VREF 3.3
+#define ADC_VREF 3.412
 extern uint16_t rawADCBuffer[8];
 extern float voltageBuffer[8];
 void computeSTM_ADC_Voltages();

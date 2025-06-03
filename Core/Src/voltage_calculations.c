@@ -82,7 +82,7 @@ void computeAllTemps() {
 
 void computeSTM_ADC_Voltages() {
 	for (size_t i = 0; i < 8; i++) {
-		voltageBuffer[i] = computeVoltage(rawADCBuffer[i]);
+		voltageBuffer[i] = (rawADCBuffer[i] * ADC_VREF)/4095.0;
 	}
 }
 
