@@ -30,6 +30,8 @@ float highestTemp;
 float lowestTemp;
 float averageTemp;
 
+int numValidTemps = 0;
+
 // ALL VOLTAGE CALCULATIONS!!!!!!
 void computeAllVoltages() {
 	  HAL_ADC_Start_DMA(&hadc1, (uint32_t*) rawADCBuffer, 8);
@@ -117,17 +119,22 @@ void getLowestTemp() {
 void getHighestTemp() {
 	float max = -FLT_MAX;
 	for (size_t i = 0; i < 20; i++) {
-		if (temp_conversions[i] > max) max = temp_conversions[i];
+		if (temp_conversions[i] > max && temp_conversions[i] < 999) max = temp_conversions[i];
 	}
 	highestTemp = max;
 }
 
 void getAverageTemp() {
+	int count = 0;
 	float sum = 0;
 	for (size_t i = 0; i < 20; i++) {
-		sum+=temp_conversions[i];
+		if (temp_conversions[i] < 999) {
+			sum+=temp_conversions[i];
+			count++;
+		}
 	}
-	averageTemp = (sum/20);
+	numValidTemps = count; // Reset the value of numValidTemps based on this new count
+	averageTemp = (sum/numValidTemps);
 }
 
 // CAN DATAFRAME IMPLEMENTATIONS

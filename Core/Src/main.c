@@ -122,8 +122,8 @@ int main(void)
   while (1)
   {
 	  // This dataframe is constant, so need to reform it, sent every 200 ms
-	  ADDRESS_CAN_TxStatus = HAL_CAN_AddTxMessage(&hcan1,
-			  &CAN_CONTEXT.ADDRESS_CTXHeader, CAN_CONTEXT.address_broadcast_dataframe.array, &mailbox);
+//	  ADDRESS_CAN_TxStatus = HAL_CAN_AddTxMessage(&hcan1,
+//			  &CAN_CONTEXT.ADDRESS_CTXHeader, CAN_CONTEXT.address_broadcast_dataframe.array, &mailbox);
 
 	  // Meanwhile, thermistor dataframe is sent every 100ms, needs to be recomputed
 	  formThermistorDataframe(&(CAN_CONTEXT.thermistor_broadcast_dataframe));

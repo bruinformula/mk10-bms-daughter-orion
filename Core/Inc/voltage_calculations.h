@@ -34,6 +34,7 @@ extern float voltageBuffer[8];
 void computeSTM_ADC_Voltages();
 
 // ALL TEMP COMPUTATIONS!!!!
+extern int numValidTemps;
 extern const float voltage_table[33];
 extern const float temp_table[33];
 extern float temp_conversions[20];
@@ -49,7 +50,7 @@ void getHighestTemp();
 void getAverageTemp();
 
 // Preparing the CAN Dataframes
-#define MODULE_NUMBER 1
+#define MODULE_NUMBER 5 // NEEDS TO BE CHANGED PER SEGMENT
 #define NUM_THERMISTORS 20
 #define THERMISTOR_LOWEST_INDEX ((MODULE_NUMBER - 1)*128)
 #define THERMISTOR_HIGHEST_INDEX (THERMISTOR_LOWEST_INDEX + NUM_THERMISTORS-1)
