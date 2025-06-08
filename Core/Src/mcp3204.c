@@ -5,7 +5,6 @@
 // *      Author: ishanchitale
 // */
 
-
 #include "mcp3204.h"
 
 void initMCP(MCP3204* mcp, SPI_HandleTypeDef* spi, GPIO_TypeDef* port, uint16_t pin) {

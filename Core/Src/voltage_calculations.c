@@ -22,6 +22,8 @@ const float temp_table[33] = {
 };
 
 float temp_conversions[20];
+bool initialInvalidTemps[20] = {0};
+bool allInvalidTemps[20] = {0};
 
 uint16_t rawADCBuffer[8];
 float voltageBuffer[8];
@@ -30,7 +32,23 @@ float highestTemp;
 float lowestTemp;
 float averageTemp;
 
-int numValidTemps;
+int numValidTemps = 0;
+int numInitialInvalidTemps = 0;
+int numInvalidTemps = 0;
+
+void moduleStartup() {
+	computeAllVoltages();
+	computeAllTemps();
+
+	for (size_t i = 0; i < 20; i++) {
+		if (temp_conversions[i] > MAX_TEMPERATURE) {
+			initialInvalidTemps[i] = 1;
+			numInitialInvalidTemps++;
+		}
+	}
+	// Thus, any temp that is NOT valid will be given a "1" in this array
+	// We will reference this later to issue faults
+}
 
 // ALL VOLTAGE CALCULATIONS!!!!!!
 void computeAllVoltages() {
@@ -119,22 +137,24 @@ void getLowestTemp() {
 void getHighestTemp() {
 	float max = -FLT_MAX;
 	for (size_t i = 0; i < 20; i++) {
-		if (temp_conversions[i] > max && temp_conversions[i] < 999) max = temp_conversions[i];
+		if (temp_conversions[i] > max && temp_conversions[i] < MAX_TEMPERATURE) max = temp_conversions[i];
 	}
 	highestTemp = max;
 }
 
 void getAverageTemp() {
-	int count = 0;
 	float sum = 0;
 	for (size_t i = 0; i < 20; i++) {
-		if (temp_conversions[i] < 999) {
+		if (temp_conversions[i] < MAX_TEMPERATURE) {
 			sum+=temp_conversions[i];
-			count++;
 		}
 	}
-	numValidTemps = count; // Reset the value of numValidTemps based on this new count
-	averageTemp = (sum/numValidTemps);
+
+	if (numValidTemps == 0) {
+		averageTemp = 999.0;
+	} else {
+		averageTemp = (sum/numValidTemps);
+	}
 }
 
 // CAN DATAFRAME IMPLEMENTATIONS
@@ -143,17 +163,30 @@ void formAddressDataframe(J1939_ADDRESS_BROADCAST_DF* dataframe) {
 	dataframe->data.j1931_address_b2 = 0x00;
 	dataframe->data.j1931_address_b3 = 0x80;
 	dataframe->data.bms_address = 0xF3;
-//	dataframe->data.thermistor_module_number_shifted = (MODULE_NUMBER << 3);
 	dataframe->data.thermistor_module_number_shifted = ((MODULE_NUMBER-1) << 3);
 	dataframe->data.c1 = 0x40;
 	dataframe->data.c2 = 0x1E;
 	dataframe->data.c3 = 0x90;
 }
 
+bool issueFault = false;
 void formThermistorDataframe(THERMISTOR_BMS_BROADCAST_DF* dataframe) {
 	// Do all the necessary calculations
 	computeAllVoltages();
 	computeAllTemps();
+
+	numInvalidTemps = 0;
+	for (size_t i = 0; i < 20; i++) {
+		if (temp_conversions[i] > MAX_TEMPERATURE) {
+			numInvalidTemps++;
+		}
+	}
+	numValidTemps = NUM_THERMISTORS - numInvalidTemps;
+
+	if (numInvalidTemps - numInitialInvalidTemps > MAX_NUM_INVALID_TEMPS) {
+		// Too many working temps have now become broken!
+		issueFault = true;
+	}
 
 	getLowestTemp();
 	getHighestTemp();
@@ -162,12 +195,15 @@ void formThermistorDataframe(THERMISTOR_BMS_BROADCAST_DF* dataframe) {
 	uint8_t checksum = 0;
 
 	// Now prepare the dataframe!
-//	dataframe->data.thermistor_module_number = MODULE_NUMBER;
 	dataframe->data.thermistor_module_number = (MODULE_NUMBER-1);
 	dataframe->data.lowest_temp_value = (int8_t)lowestTemp;
 	dataframe->data.highest_temp_value = (int8_t)highestTemp;
 	dataframe->data.average_temp_value = (int8_t)averageTemp;
 	dataframe->data.num_thermistors = NUM_THERMISTORS;
+	if (issueFault) {
+		dataframe->data.num_thermistors |= 0x80;
+		// Set the fault bit!
+	}
 	dataframe->data.highest_thermistor_id = THERMISTOR_HIGHEST_INDEX;
 	dataframe->data.lowest_thermistor_id = THERMISTOR_LOWEST_INDEX;
 

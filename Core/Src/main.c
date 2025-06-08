@@ -116,6 +116,11 @@ int main(void)
   CAN_CONTEXT.THERMISTOR_CTXHeader.IDE = CAN_ID_EXT;
   CAN_CONTEXT.THERMISTOR_CTXHeader.RTR = CAN_RTR_DATA;
   CAN_CONTEXT.THERMISTOR_CTXHeader.DLC = 8;
+
+  // Now, add a startup function to compute which temps are "broken"
+  // Store the ID's or indices of the broken temps
+  moduleStartup();
+
   /* USER CODE END 2 */
 
   /* Infinite loop */

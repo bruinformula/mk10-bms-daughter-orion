@@ -12,6 +12,7 @@
 #include "float.h"
 #include "mcp3204.h"
 #include "dataframes.h"
+#include "stdbool.h"
 
 // External MCP3204 ADCs
 #define CS1_PORT GPIOC
@@ -34,10 +35,17 @@ extern float voltageBuffer[8];
 void computeSTM_ADC_Voltages();
 
 // ALL TEMP COMPUTATIONS!!!!
-extern int numValidTemps;
+#define MAX_NUM_INVALID_TEMPS 10
+#define MAX_TEMPERATURE 80
+
+extern int numInitialInvalidTemps; // Set the value on moduleStartup()
+extern int numInvalidTemps;
+extern int numValidTemps; // Global variable which we will always reset on each iteration
 extern const float voltage_table[33];
 extern const float temp_table[33];
 extern float temp_conversions[20];
+extern bool initialInvalidTemps[20];
+extern bool allInvalidTemps[20];
 void computeAllVoltages();
 void computeAllTemps();
 float voltageToTemp(float V);
@@ -50,10 +58,11 @@ void getHighestTemp();
 void getAverageTemp();
 
 // Preparing the CAN Dataframes
-#define MODULE_NUMBER 5 // NEEDS TO BE CHANGED PER SEGMENT
+#define MODULE_NUMBER 5 // NEEDS TO BE CHANGED PER SEGMENT!!!!!
 #define NUM_THERMISTORS 20
 #define THERMISTOR_HIGHEST_INDEX (NUM_THERMISTORS-1)
 #define THERMISTOR_LOWEST_INDEX 0
+void moduleStartup();
 void formAddressDataframe(J1939_ADDRESS_BROADCAST_DF* dataframe);
 void formThermistorDataframe(THERMISTOR_BMS_BROADCAST_DF* dataframe);
 
